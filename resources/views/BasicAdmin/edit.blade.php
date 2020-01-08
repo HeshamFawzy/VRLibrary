@@ -7,7 +7,7 @@
 	    <h1 class="text-center">Edit Profile</h1>
 	    <div class="form-group">
 	        <label for="name" class="h4">Name :</label>
-	        <input type="text" class="form-control" name="name" required="" value="{{$admin->name}}" />
+	        <input type="text" class="form-control" name="name" required="" value="{{$admin->name}}" disabled="" />
 	    </div>
 
 	    <div class="form-group">
