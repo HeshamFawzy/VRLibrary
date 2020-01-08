@@ -33,8 +33,4 @@ Route::get('/registerR', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/index', function () {
-    return view('BasicAdmin.index');
-});
+Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
