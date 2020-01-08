@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Storage;
+use File;
+use App\BasicAdmin;
 
 class BasicAdminController extends Controller
 {
@@ -78,6 +81,23 @@ class BasicAdminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $admin = BasicAdmin::find($id);
+
+        $admin->birth_date =  $request->input('birthdate');
+        $admin->hire_date =  $request->input('hiredate');
+        $admin->address =  $request->input('address');
+        $admin->phone =  $request->input('phone');
+        $admin->salary =  $request->input('salary');
+
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        Storage::disk('public')->put($image->getFilename().'.'.$extension,  File::get($image));
+
+        $admin->mime = $image->getClientMimeType();
+        $admin->original_filename = $image->getClientOriginalName();
+        $admin->filename = $image->getFilename().'.'.$extension;
+        $admin->save();
+
         $admin = DB::table('basic_admins')
         ->join('users', 'users.id', '=' , 'basic_admins.user_id')
         ->first();
