@@ -78,6 +78,10 @@ class BasicAdminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $admin = DB::table('basic_admins')
+        ->join('users', 'users.id', '=' , 'basic_admins.user_id')
+        ->first();
+        return view('BasicAdmin.index', ['admin' => $admin]);
     }
 
     /**

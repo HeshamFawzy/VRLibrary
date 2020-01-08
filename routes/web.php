@@ -36,3 +36,5 @@ Auth::routes();
 Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
 
 Route::get('/edit/{id}', 'BasicAdminController@edit')->name('basicadmin.edit');
+
+Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.update');

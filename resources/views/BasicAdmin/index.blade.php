@@ -18,7 +18,7 @@
 		            <img src="https://via.placeholder.com/150" class="w-100">
 		        </div>
 		    </div>
-		    <a class="btn btn-primary" href="{{ url('/edit', $admin->id)}}">Edit</a>
+		    <a class="btn btn-primary" href="{{ route('basicadmin.edit', $admin->id)}}">Edit</a>
       	</div>
 	</div>
 @endsection
