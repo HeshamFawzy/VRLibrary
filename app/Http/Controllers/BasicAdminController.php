@@ -114,4 +114,12 @@ class BasicAdminController extends Controller
     {
         //
     }
+
+
+
+    public function Admins()
+    {
+
+        return view('BasicAdmin.admins');
+    }
 }
