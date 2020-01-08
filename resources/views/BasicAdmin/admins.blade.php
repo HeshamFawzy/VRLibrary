@@ -37,4 +37,26 @@
 	    </div>
 	</form>
 </div>
+<br>
+<div style="background-color: white;">
+	<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    	
+    </tr>
+  </tbody>
+</table>
+<div>
+
+
+
 @endsection
