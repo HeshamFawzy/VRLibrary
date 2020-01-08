@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{{ url('/')}}">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('aboutus')}}">About Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('contactus')}}">Contact Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('loginR')}}">Login</a></li>
@@ -36,16 +36,16 @@
                 <div class="col-sm-3">
                     <h5>Get started</h5>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Sign in</a></li>
+                        <li><a href="{{ url('/')}}">Home</a></li>
+                        <li><a href="{{ url('registerR')}}">Sign up</a></li>
+                        <li><a href="{{ url('loginR')}}">Sign in</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
                     <h5>About us</h5>
                     <ul>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">About us</a></li>
+                        <li><a href="{{ url('contactus')}}">Contact us</a></li>
+                        <li><a href="{{ url('aboutus')}}">About us</a></li>
                     </ul>
                 </div>
             </div>
