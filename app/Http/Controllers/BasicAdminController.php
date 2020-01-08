@@ -119,7 +119,9 @@ class BasicAdminController extends Controller
 
     public function Admins()
     {
-
-        return view('BasicAdmin.admins');
+        $admins = DB::table('admins')
+        ->join('users', 'users.id', '=' , 'admins.user_id')
+        ->get();
+        return view('BasicAdmin.admins')->with('admins' , $admins);
     }
 }

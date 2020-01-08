@@ -39,19 +39,34 @@
 </div>
 <br>
 <div style="background-color: white;">
-	<table class="table table-hover">
+	<table class="table table-hover m-5">
   <thead>
     <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Salary</th>
-      <th scope="col">Phone</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Hire Date</th>
+      <th>Salary</th>
+      <th>Phone</th>
+      <th colspan="2">Modify</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-    	
+    	@if(count($admins) > 0)
+			@foreach($admins as $admin)
+				<td>{{$admin->first_name}}</td>
+				<td>{{$admin->last_name}}</td>
+				<td>{{$admin->email}}</td>
+				<td>{{$admin->hire_date}}</td>
+				<td>{{$admin->salary}}</td>
+				<td>{{$admin->phone}}</td>
+				<td>
+					<a href="#" class="btn btn-success">Edit</a>
+					<a href="#" class="btn btn-danger">Delete</a>
+				</td>
+			@endforeach
+		@endif
     </tr>
   </tbody>
 </table>
