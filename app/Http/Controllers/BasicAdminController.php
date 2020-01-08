@@ -124,4 +124,24 @@ class BasicAdminController extends Controller
         ->get();
         return view('BasicAdmin.admins')->with('admins' , $admins);
     }
+
+    public function addadmin(Request $request)
+    {
+        /*dd($request);
+        $admin = new User;
+
+        $admin->name = $request->firstname + " " +$request->lastname;
+        $admin->email = $request->email;
+        $admin->password = $request->password;
+
+        $admin->save();
+
+        $admin = new Admin;
+        $admin->hiredate = $request->hiredate;
+        $admin->salary = $request->salary;
+
+        $admin->save();*/
+
+        return response()->json($request);
+    }
 }

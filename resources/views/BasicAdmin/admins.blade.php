@@ -5,37 +5,36 @@
 	    <h1 class="text-center">Create Admin</h1>
 	    <div class="form-group">
 	        <label for="firstname" class="h4">First Name :</label>
-	        <input type="text" class="form-control" name="firstname" />
+	        <input type="text" class="form-control" name="firstname" id="firstname" />
 	    </div>
 
 	     <div class="form-group">
 	        <label for="lastname" class="h4">Last Name :</label>
-	        <input type="text" class="form-control" name="lastname" />
+	        <input type="text" class="form-control" name="lastname" id="lastname" />
 	    </div>
 
 	     <div class="form-group">
 	        <label for="email" class="h4">Email :</label>
-	        <input type="email" class="form-control" name="email" />
+	        <input type="email" class="form-control" name="email" id="email"/>
 	    </div>
 
 	     <div class="form-group">
 	        <label for="password" class="h4">Password :</label>
-	        <input type="password" class="form-control" name="password" />
+	        <input type="password" class="form-control" name="password" id="password"/>
 	    </div>
 
 	    <div class="form-group">
 	        <label for="hiredate" class="h4">Hire Date :</label>
-	        <input type="date" class="form-control" name="hiredate" />
+	        <input type="date" class="form-control" name="hiredate" id="hiredate"/>
 	    </div>
 
 	     <div class="form-group">
 	        <label for="salary" class="h4">Salary :</label>
-	        <input type="number" class="form-control" name="salary" />
+	        <input type="number" class="form-control" name="salary" id="salary"/>
 	    </div>
-	      <div class="form-group">
-	        <input type="submit" class="btn btn-primary float-right" name="submit" value="Save" />
+	    <div class="form-group">
+	        <button class="btn btn-primary float-right button">Save</button>
 	    </div>
-	</form>
 </div>
 <br>
 <div style="background-color: white;">
@@ -72,6 +71,26 @@
 </table>
 <div>
 
+<script>
+        $(document).ready(function(){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $(".button").click(function(){
+            	alert('h');
+                $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/addadmin',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {_token: CSRF_TOKEN, firstname:$('#firstname').val(),lastname:$('#lastname').val(),email:$('#email').val(),password:$('#password').val(),hiredate:$('#hiredate').val(),salary:$('#salary').val()},
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function (data) { 
+                    	console.log(data);
+                    }
+                }); 
+            });
+       });    
+</script>
 
 
 @endsection
