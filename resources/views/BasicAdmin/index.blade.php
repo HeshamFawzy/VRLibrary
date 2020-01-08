@@ -15,7 +15,7 @@
 		            </div>
 		        </div>
 		        <div class="col-md-4">
-		            <img src="{{url('uploads/'.$admin->filename)}}" style="width: 150px;">
+		            <img src="{{url('uploads/'.$admin->filename)}}" class="rounded-circle" style="width: 150px;">
 		        </div>
 		    </div>
 		    <a class="btn btn-primary" href="{{ route('basicadmin.edit', $admin->id)}}">Edit</a>

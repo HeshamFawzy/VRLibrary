@@ -37,7 +37,7 @@
 	   
 	    <div class="form-group">
 	        <label for="image" class="h4">Image :</label>
-	        <input type="file" class="form-control" name="image" required="" accept="image/gif, image/jpeg, image/png"/>
+	        <input type="file" class="form-control" name="image" accept="image/gif, image/jpeg, image/png" required="" />
 	    </div>
 	    <div class="form-group">
 	        <input type="submit" class="btn btn-primary float-right" name="submit"/>
