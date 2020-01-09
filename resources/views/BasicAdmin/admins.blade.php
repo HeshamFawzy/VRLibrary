@@ -62,7 +62,7 @@
 				<td>{{$admin->phone}}</td>
 				<td>
 					<a href="#" class="btn btn-success">Edit</a>
-					<a href="#" class="btn btn-danger">Delete</a>
+					<a href="{{ url('/destroy' , $admin->id)}}" class="btn btn-danger">Delete</a>
 				</td>
     </tr>
     @endforeach
@@ -75,7 +75,6 @@
         $(document).ready(function(){
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $(".button").click(function(){
-            	alert('h');
                 $.ajax({
                     /* the route pointing to the post function */
                     url: '/store',
@@ -85,7 +84,7 @@
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) { 
-                    	console.log(data);
+                    	//console.log(data);
                     }
                 }); 
             });
