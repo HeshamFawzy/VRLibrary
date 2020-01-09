@@ -45,11 +45,23 @@ class BasicAdminController extends Controller
     public function store(Request $request)
     {
         //
-        $admin = new User();
+        $adminuser = new User();
 
-        $admin->name = $request->input('firstname');
-        $admin->email = $request->input('email');
-        $admin->password = bcrypt($request->input('password'));
+        $adminuser->name = $request->input('firstname');
+        $adminuser->email = $request->input('email');
+        $adminuser->password = bcrypt($request->input('password'));
+
+        $adminuser->save();
+
+        $admin_id = DB::table('users')
+        -select('id')
+        ->last();
+
+        $admin = new Admin();
+
+        $admin->user_id = $admin_id;
+        $admin->hire_date = $request->input('hiredate');
+        $admin->salary = $request->input('salary');
 
         $admin->save();
        
@@ -91,23 +103,20 @@ class BasicAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $admin = BasicAdmin::find($id);
-
-        $admin->birth_date =  $request->input('birthdate');
-        $admin->hire_date =  $request->input('hiredate');
-        $admin->address =  $request->input('address');
-        $admin->phone =  $request->input('phone');
-        $admin->salary =  $request->input('salary');
-
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
         Storage::disk('public')->put($image->getFilename().'.'.$extension,  File::get($image));
 
-        $admin->mime = $image->getClientMimeType();
-        $admin->original_filename = $image->getClientOriginalName();
-        $admin->filename = $image->getFilename().'.'.$extension;
-        $admin->save();
+        BasicAdmin::where('basic_admins.user_id' , '=' , $id)->update([
+            "birth_date"            => $request->input('birthdate'),
+            "hire_date"             => $request->input('hiredate'),
+            "address"               => $request->input('address'),
+            "phone"                 => $request->input('phone'),
+            "salary"                => $request->input('salary'),
+            "mime"                  => $image->getClientMimeType(),
+            "original_filename"     => $image->getClientOriginalName(),
+            "filename"              => $image->getFilename().'.'.$extension,
+        ]);
 
         $admin = DB::table('basic_admins')
         ->join('users', 'users.id', '=' , 'basic_admins.user_id')
