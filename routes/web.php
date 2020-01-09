@@ -41,6 +41,6 @@ Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.upd
 
 Route::get('/admins', 'BasicAdminController@admins')->name('basicadmin.admins');
 
-Route::post('/addadmin', 'BasicAdminController@addadmin')->name('basicadmin.addadmin');
+Route::post('/store', 'BasicAdminController@store')->name('basicadmin.store');
 
 Route::get('ajax', function(){ return view('ajax'); });

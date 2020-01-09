@@ -7,6 +7,8 @@ use DB;
 use Illuminate\Support\Facades\Storage;
 use File;
 use App\BasicAdmin;
+use App\Admin;
+use App\User;
 
 class BasicAdminController extends Controller
 {
@@ -43,6 +45,15 @@ class BasicAdminController extends Controller
     public function store(Request $request)
     {
         //
+        $admin = new User();
+
+        $admin->name = $request->input('firstname');
+        $admin->email = $request->input('email');
+        $admin->password = bcrypt($request->input('password'));
+
+        $admin->save();
+       
+        return response()->json($admin);
     }
 
     /**
@@ -125,23 +136,4 @@ class BasicAdminController extends Controller
         return view('BasicAdmin.admins')->with('admins' , $admins);
     }
 
-    public function addadmin(Request $request)
-    {
-        /*dd($request);
-        $admin = new User;
-
-        $admin->name = $request->firstname + " " +$request->lastname;
-        $admin->email = $request->email;
-        $admin->password = $request->password;
-
-        $admin->save();
-
-        $admin = new Admin;
-        $admin->hiredate = $request->hiredate;
-        $admin->salary = $request->salary;
-
-        $admin->save();*/
-
-        return response()->json($request);
-    }
 }

@@ -78,7 +78,7 @@
             	alert('h');
                 $.ajax({
                     /* the route pointing to the post function */
-                    url: '/addadmin',
+                    url: '/store',
                     type: 'POST',
                     /* send the csrf-token and the input to the controller */
                     data: {_token: CSRF_TOKEN, firstname:$('#firstname').val(),lastname:$('#lastname').val(),email:$('#email').val(),password:$('#password').val(),hiredate:$('#hiredate').val(),salary:$('#salary').val()},
