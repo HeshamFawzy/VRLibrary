@@ -16,14 +16,14 @@ class CreateBasicAdminsTable extends Migration
         Schema::create('basic_admins', function (Blueprint $table) {
             $table->increments('id');
             $table->Integer('user_id')->unsigned();
-            $table->date('birth_date');
-            $table->date('hire_date');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('salary');
-            $table->string('filename');
-            $table->string('mime');
-            $table->string('original_filename');
+            $table->date('birth_date')->nullable();
+            $table->date('hire_date')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('salary')->nullable();
+            $table->string('filename')->nullable();
+            $table->string('mime')->nullable();
+            $table->string('original_filename')->nullable();
 
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -20,10 +20,11 @@ class BasicAdminController extends Controller
     public function index()
     {
         //
-        $admin = DB::table('basic_admins')
+        $basicadmin = DB::table('basic_admins')
         ->join('users', 'users.id', '=' , 'basic_admins.user_id')
         ->first();
-        return view('BasicAdmin.index', ['admin' => $admin]);
+
+        return view('BasicAdmin.index', ['basicadmin' => $basicadmin]);
     }
 
     /**
@@ -44,26 +45,18 @@ class BasicAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $adminuser = new User();
 
-        $adminuser->name = $request->input('firstname');
-        $adminuser->email = $request->input('email');
-        $adminuser->password = bcrypt($request->input('password'));
+        $adminuser = User::create([
+            'name' => $request->input('firstname'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
 
-        $adminuser->save();
-
-        $admin_id = DB::table('users')
-        -select('id')
-        ->last();
-
-        $admin = new Admin();
-
-        $admin->user_id = $admin_id;
-        $admin->hire_date = $request->input('hiredate');
-        $admin->salary = $request->input('salary');
-
-        $admin->save();
+        $admin = Admin::create([
+            'user_id' => $adminuser->id,
+            'hire_date' => $request->input('hiredate'),
+            'salary' => $request->input('salary'),
+        ]);
        
         return response()->json($admin);
     }
@@ -118,10 +111,10 @@ class BasicAdminController extends Controller
             "filename"              => $image->getFilename().'.'.$extension,
         ]);
 
-        $admin = DB::table('basic_admins')
+        $basicadmin = DB::table('basic_admins')
         ->join('users', 'users.id', '=' , 'basic_admins.user_id')
         ->first();
-        return view('BasicAdmin.index', ['admin' => $admin]);
+        return view('BasicAdmin.index', ['basicadmin' => $basicadmin]);
     }
 
     /**
@@ -142,7 +135,24 @@ class BasicAdminController extends Controller
         $admins = DB::table('admins')
         ->join('users', 'users.id', '=' , 'admins.user_id')
         ->get();
+
         return view('BasicAdmin.admins')->with('admins' , $admins);
+    }
+
+
+    public function Start()
+    {
+        $BasicAdminUser = User::create([
+            'name' => 'Admin',
+            'email' => 'Admin@Admin.com',
+            'password' => bcrypt('123456Aa_'),
+        ]);
+
+        $BasicAdmin = BasicAdmin::create([
+            'user_id' =>   $BasicAdminUser->id,
+        ]);
+
+        return("ok");
     }
 
 }

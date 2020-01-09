@@ -11,21 +11,23 @@
     	</div>
 		<div class="card p-2">
 		    <div class="row ">
+		    	@if($basicadmin ?? '')	
 		        <div class="col-md-8 px-3">
 		            <div class="card-block px-3">
-		            	<p>Welcome :<span> {{$admin->name}}</span></p>
-		            	<p>Birth Date :<span> {{$admin->birth_date}}</span></p>
-		            	<p>Hire Date <span> {{$admin->hire_date}}</span>
-		            	<p>Address :<span> {{$admin->address}}</span></p>
-		            	<p>Phone :<span> {{$admin->phone}}</span></p>
-		            	<p>Salary :<span> {{$admin->salary}}</span></p>
+		            	<p>Welcome :<span> {{$basicadmin->name}}</span></p>
+		            	<p>Birth Date :<span> {{$basicadmin->birth_date}}</span></p>
+		            	<p>Hire Date <span> {{$basicadmin->hire_date}}</span>
+		            	<p>Address :<span> {{$basicadmin->address}}</span></p>
+		            	<p>Phone :<span> {{$basicadmin->phone}}</span></p>
+		            	<p>Salary :<span> {{$basicadmin->salary}}</span></p>
 		            </div>
 		        </div>
 		        <div class="col-md-4">
-		            <img src="{{url('uploads/'.$admin->filename)}}" class="rounded-circle mr-5" style="width: 150px;">
+		            	<img src="{{url('uploads/'.$basicadmin->filename)}}" class="rounded-circle mr-5" style="width: 150px;">
 		        </div>
+		        @endif
 		    </div>
-		    <a class="btn btn-primary" href="{{ route('basicadmin.edit', $admin->id)}}">Edit</a>
+		    <a class="btn btn-primary" href="{{ route('basicadmin.edit', $basicadmin->id)}}">Edit</a>
       	</div>
 	</div>
 @endsection

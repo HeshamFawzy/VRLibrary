@@ -33,6 +33,8 @@ Route::get('/registerR', function () {
 
 Auth::routes();
 
+Route::get('/start', 'BasicAdminController@start')->name('basicadmin.start');
+
 Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
 
 Route::get('/edit/{id}', 'BasicAdminController@edit')->name('basicadmin.edit');
