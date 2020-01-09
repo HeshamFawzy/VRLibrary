@@ -51,9 +51,9 @@
     </tr>
   </thead>
   <tbody>
+  	@if(count($admins) > 0)
+	@foreach($admins as $admin)
     <tr>
-    	@if(count($admins) > 0)
-			@foreach($admins as $admin)
 				<td>{{$admin->first_name}}</td>
 				<td>{{$admin->last_name}}</td>
 				<td>{{$admin->email}}</td>
@@ -64,9 +64,9 @@
 					<a href="#" class="btn btn-success">Edit</a>
 					<a href="#" class="btn btn-danger">Delete</a>
 				</td>
-			@endforeach
-		@endif
     </tr>
+    @endforeach
+	@endif
   </tbody>
 </table>
 <div>

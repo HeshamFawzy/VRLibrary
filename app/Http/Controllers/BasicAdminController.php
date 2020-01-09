@@ -54,6 +54,8 @@ class BasicAdminController extends Controller
 
         $admin = Admin::create([
             'user_id' => $adminuser->id,
+            'first_name' => $request->input('firstname'),
+            'last_name' => $request->input('lastname'),
             'hire_date' => $request->input('hiredate'),
             'salary' => $request->input('salary'),
         ]);
