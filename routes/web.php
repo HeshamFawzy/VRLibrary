@@ -39,7 +39,7 @@ Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
 
 Route::get('/editportfolio/{id}', 'BasicAdminController@editportfolio')->name('basicadmin.editportfolio');
 
-Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.update');
+Route::post('/updateportfolio/{id}', 'BasicAdminController@updateportfolio')->name('basicadmin.updateportfolio');
 
 Route::get('/admins', 'BasicAdminController@admins')->name('basicadmin.admins');
 
@@ -50,3 +50,5 @@ Route::get('ajax', function(){ return view('ajax'); });
 Route::get('/destroy/{id}', 'BasicAdminController@destroy')->name('basicadmin.destroy');
 
 Route::get('/edit/{id}', 'BasicAdminController@edit')->name('basicadmin.edit');
+
+Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.update');

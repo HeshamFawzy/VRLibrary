@@ -109,25 +109,25 @@ class BasicAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $image = $request->file('image');
-        $extension = $image->getClientOriginalExtension();
-        Storage::disk('public')->put($image->getFilename().'.'.$extension,  File::get($image));
 
-        BasicAdmin::where('basic_admins.user_id' , '=' , $id)->update([
-            "birth_date"            => $request->input('birthdate'),
-            "hire_date"             => $request->input('hiredate'),
-            "address"               => $request->input('address'),
-            "phone"                 => $request->input('phone'),
-            "salary"                => $request->input('salary'),
-            "mime"                  => $image->getClientMimeType(),
-            "original_filename"     => $image->getClientOriginalName(),
-            "filename"              => $image->getFilename().'.'.$extension,
+        User::where('users.id' , '=' , $id)->update([
+            "email"                     => $request->input('email'),
+            "password"                  => bcrypt($request->input('password')),
         ]);
 
-        $basicadmin = DB::table('basic_admins')
-        ->join('users', 'users.id', '=' , 'basic_admins.user_id')
-        ->first();
-        return view('BasicAdmin.index', ['basicadmin' => $basicadmin]);
+        Admin::where('admins.user_id' , '=' , $id)->update([
+            "first_name"                => $request->input('firstname'),
+            "last_name"                 => $request->input('lastname'),
+            "hire_date"                 => $request->input('hiredate'),
+            "salary"                    => $request->input('salary'),
+            "phone"                     => $request->input('phone'),
+        ]);
+
+        $admins = DB::table('admins')
+        ->join('users', 'users.id', '=' , 'admins.user_id')
+        ->get();
+
+        return view('BasicAdmin.admins' , ['admins' => $admins]);
     }
 
     /**
@@ -159,6 +159,29 @@ class BasicAdminController extends Controller
         ->join('users', 'users.id', '=' , 'basic_admins.user_id')
         ->first();
         return view('BasicAdmin.editportfolio', ['admin' => $admin]);
+    }
+
+    public function updateportfolio(Request $request, $id)
+    {
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        Storage::disk('public')->put($image->getFilename().'.'.$extension,  File::get($image));
+
+        BasicAdmin::where('basic_admins.user_id' , '=' , $id)->update([
+            "birth_date"            => $request->input('birthdate'),
+            "hire_date"             => $request->input('hiredate'),
+            "address"               => $request->input('address'),
+            "phone"                 => $request->input('phone'),
+            "salary"                => $request->input('salary'),
+            "mime"                  => $image->getClientMimeType(),
+            "original_filename"     => $image->getClientOriginalName(),
+            "filename"              => $image->getFilename().'.'.$extension,
+        ]);
+
+        $basicadmin = DB::table('basic_admins')
+        ->join('users', 'users.id', '=' , 'basic_admins.user_id')
+        ->first();
+        return view('BasicAdmin.index', ['basicadmin' => $basicadmin]);
     }
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container col-6 card p-4">
-	<form method="post" action="{{ route('basicadmin.update', $admin->id)}}" enctype="multipart/form-data">
+	<form method="post" action="{{ route('basicadmin.updateportfolio', $admin->id)}}" enctype="multipart/form-data">
 	    @csrf
 	    <h1 class="text-center">Edit Profile</h1>
 	    <div class="form-group">
