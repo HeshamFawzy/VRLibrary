@@ -37,7 +37,7 @@ Route::get('/start', 'BasicAdminController@start')->name('basicadmin.start');
 
 Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
 
-Route::get('/edit/{id}', 'BasicAdminController@edit')->name('basicadmin.edit');
+Route::get('/editportfolio/{id}', 'BasicAdminController@editportfolio')->name('basicadmin.editportfolio');
 
 Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.update');
 

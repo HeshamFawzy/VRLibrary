@@ -89,7 +89,7 @@ class BasicAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editportfolio($id)
     {
         //
         $admin = DB::table('basic_admins')
