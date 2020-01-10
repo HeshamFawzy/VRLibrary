@@ -63,7 +63,7 @@
 				<td>{{$admin->phone}}</td>
 				<td>
 					<a href="#" class="btn btn-success">Edit</a>
-					<a href="{{ url('/destroy' , $admin->id)}}" class="btn btn-danger" name="delete">{{$admin->id}}</a>
+					<a href="{{ url('/destroy' , $admin->id)}}" class="btn btn-danger" name="delete">Delete</a>
 				</td>
     </tr>
     @endforeach
@@ -92,6 +92,12 @@
                     	'<td>' + data.email + '</td>' + 
                     	'<td>' + data.hire_date + '</td>' + 
                     	'<td>' + data.salary + '</td>' + 
+                    	'<td>' +
+                        @if($admin ?? '')
+	                    	'<a href="#" class="btn btn-success">Edit</a>' +
+							'<a href="{{ url("/destroy" , '$admin->id')}}" class="btn btn-danger" name="delete">'{{$admin->id}}'</a>
+						@endif
+                    	 + '</td>' +
       					'</tr>';
                     	$('#table').append(html);
                     }
