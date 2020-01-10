@@ -59,6 +59,11 @@ class BasicAdminController extends Controller
             'hire_date' => $request->input('hiredate'),
             'salary' => $request->input('salary'),
         ]);
+
+        $admin = DB::table('users')
+        ->where('id' , '=' , $adminuser->id)
+        ->join('admins', 'admins.id', '=' , 'users.id')
+        ->first();
        
         return response()->json($admin);
     }

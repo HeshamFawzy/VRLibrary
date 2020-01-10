@@ -50,7 +50,7 @@
       <th colspan="2">Modify</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="table">
   	@if(count($admins) > 0)
 	@foreach($admins as $admin)
     <tr>
@@ -84,7 +84,14 @@
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) { 
-                    	console.log(data.first_name);
+                    	var html = '<tr>' + 
+                    	'<td>' + data.first_name + '</td>' + 
+                    	'<td>' + data.last_name + '</td>' + 
+                    	'<td>' + data.email + '</td>' + 
+                    	'<td>' + data.hire_date + '</td>' + 
+                    	'<td>' + data.salary + '</td>' + 
+      					'</tr>';
+                    	$('#table').append(html);
                     }
                 }); 
             });
