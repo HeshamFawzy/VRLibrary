@@ -35,6 +35,7 @@
 	    </div>
 	    <div class="form-group">
 	        <button class="btn btn-primary float-right" id="save" name="save">Save</button>
+	        <a href="{{url('/index')}}" class="btn btn-primary">Back</a>
 	    </div>
 	</div>
 
