@@ -9,6 +9,7 @@ use File;
 use App\BasicAdmin;
 use App\Admin;
 use App\User;
+use App\Employee;
 
 class BasicAdminController extends Controller
 {
@@ -213,6 +214,29 @@ class BasicAdminController extends Controller
         ->first();
 
         return view('BasicAdmin.editE', ['employee' => $employee]);
+    }
+
+    public function updateE(Request $request, $id)
+    {
+
+        User::where('users.id' , '=' , $id)->update([
+            "email"                     => $request->input('email'),
+            "password"                  => bcrypt($request->input('password')),
+        ]);
+
+        Employee::where('employees.user_id' , '=' , $id)->update([
+            "first_name"                => $request->input('firstname'),
+            "last_name"                 => $request->input('lastname'),
+            "hire_date"                 => $request->input('hiredate'),
+            "salary"                    => $request->input('salary'),
+            "phone"                     => $request->input('phone'),
+        ]);
+
+        $employees = DB::table('employees')
+        ->join('users', 'users.id', '=' , 'employees.user_id')
+        ->get();
+
+        return view('BasicAdmin.employees' , ['employees' => $employees]);
     }
 
     public function destroyE($id)

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row p-1 m-2 d-flex justify-content-center">
 		<div class="col-6 card ml-2">
-			<form method="post" action="{{url('/update' , $employee->id)}}" enctype="multipart/form-data">
+			<form method="post" action="{{url('/updateE' , $employee->id)}}" enctype="multipart/form-data">
 	    		@csrf
 			    <h1 class="text-center">Edit employee</h1>
 			    <div class="form-group">

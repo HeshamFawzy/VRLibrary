@@ -58,3 +58,5 @@ Route::get('/employees', 'BasicAdminController@employees')->name('basicadmin.emp
 Route::get('/destroyE/{id}', 'BasicAdminController@destroyE')->name('basicadmin.destroyE');
 
 Route::get('/editE/{id}', 'BasicAdminController@editE')->name('basicadmin.editE');
+
+Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
