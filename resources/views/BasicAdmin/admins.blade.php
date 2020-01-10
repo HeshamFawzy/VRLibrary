@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container col-6 card p-4">
+<div class="row p-1 m-2 d-flex justify-content-center">
+	<div class="col-3 card ml-2">
 	    <h1 class="text-center">Create Admin</h1>
 	    <div class="form-group">
 	        <label for="firstname" class="h4">First Name :</label>
@@ -35,10 +36,10 @@
 	    <div class="form-group">
 	        <button class="btn btn-primary float-right" id="save" name="save">Save</button>
 	    </div>
-</div>
-<br>
-<div style="background-color: white;">
-	<table class="table table-hover m-5">
+	</div>
+
+	<div class="col-8 p-2" style="background-color: white;">
+	<table class="table table-hover">
   <thead>
     <tr>
       <th>First Name</th>
@@ -70,7 +71,8 @@
   </tbody>
 </table>
 <div>
-
+</div>
+<br>
 <script>
         $(document).ready(function(){
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
