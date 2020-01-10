@@ -134,7 +134,9 @@ class BasicAdminController extends Controller
     {
         //
         $admin = User::where('id', $id)->first();
-        $admin->delete();
+        if($admin != null){
+            $admin->delete();
+        }
 
         $admins = DB::table('admins')
         ->join('users', 'users.id', '=' , 'admins.user_id')
