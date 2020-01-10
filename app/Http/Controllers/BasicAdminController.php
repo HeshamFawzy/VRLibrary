@@ -195,11 +195,49 @@ class BasicAdminController extends Controller
         return view('BasicAdmin.admins')->with('admins' , $admins);
     }
 
+    public function Employees()
+    {
+        $employees = DB::table('employees')
+        ->join('users', 'users.id', '=' , 'employees.user_id')
+        ->get();
+
+        return view('BasicAdmin.employees')->with('employees' , $employees);
+    }
+
+    public function editE($id)
+    {
+        //
+        $employee = DB::table('employees')
+        ->where('employees.user_id', '=' , $id)
+        ->join('users' , 'users.id', '=' , 'employees.user_id')
+        ->first();
+
+        return view('BasicAdmin.editE', ['employee' => $employee]);
+    }
+
+    public function destroyE($id)
+    {
+        //
+        $employee = User::where('id', $id)->first();
+        if($employee != null){
+            $employee->delete();
+        }
+
+        $employees = DB::table('employees')
+        ->join('users', 'users.id', '=' , 'employees.user_id')
+        ->get();
+
+        return view('BasicAdmin.employees')->with('employees' , $employees);
+
+    }
+
+
+
 
     public function Start()
     {
         $BasicAdminUser = User::create([
-            'name' => 'Admin',
+            'name' => 'BasicAdmin',
             'email' => 'Admin@Admin.com',
             'password' => bcrypt('123456Aa_'),
         ]);
