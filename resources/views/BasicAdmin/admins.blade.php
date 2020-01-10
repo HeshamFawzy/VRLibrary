@@ -63,7 +63,7 @@
 				<td>{{$admin->salary}}</td>
 				<td>{{$admin->phone}}</td>
 				<td>
-					<a href="#" class="btn btn-success">Edit</a>
+					<a href="{{ url('/edit' , $admin->id)}}" class="btn btn-success">Edit</a>
 					<a href="{{ url('/destroy' , $admin->id)}}" class="btn btn-danger" name="delete">Delete</a>
 				</td>
     </tr>

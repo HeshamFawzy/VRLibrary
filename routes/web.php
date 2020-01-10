@@ -48,3 +48,5 @@ Route::post('/store', 'BasicAdminController@store')->name('basicadmin.store');
 Route::get('ajax', function(){ return view('ajax'); });
 
 Route::get('/destroy/{id}', 'BasicAdminController@destroy')->name('basicadmin.destroy');
+
+Route::get('/edit/{id}', 'BasicAdminController@edit')->name('basicadmin.edit');

@@ -89,12 +89,13 @@ class BasicAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editportfolio($id)
+    public function edit($id)
     {
         //
-        $admin = DB::table('basic_admins')
-        ->join('users', 'users.id', '=' , 'basic_admins.user_id')
+        $admin = DB::table('admins')
+        ->where('admins.user_id', '=' , $id)
         ->first();
+
         return view('BasicAdmin.edit', ['admin' => $admin]);
     }
 
@@ -148,6 +149,15 @@ class BasicAdminController extends Controller
 
         return view('BasicAdmin.admins')->with('admins' , $admins);
 
+    }
+
+    public function editportfolio($id)
+    {
+        //
+        $admin = DB::table('basic_admins')
+        ->join('users', 'users.id', '=' , 'basic_admins.user_id')
+        ->first();
+        return view('BasicAdmin.editportfolio', ['admin' => $admin]);
     }
 
 
