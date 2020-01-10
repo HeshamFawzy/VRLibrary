@@ -62,10 +62,17 @@ class BasicAdminController extends Controller
 
         $admin = DB::table('users')
         ->where('id' , '=' , $adminuser->id)
-        ->join('admins', 'admins.id', '=' , 'users.id')
-        ->first();
+        ->join('admins', 'admins.id', '=' , 'users.id');
        
-        return response()->json($admin);
+       $response = array(
+          'status' => 'success',
+          'first_name' => $request->input('firstname'),
+          'last_name' => $request->input('lastname'),
+          'email' => $request->input('email'),
+          'hire_date' => $request->input('hiredate'),
+          'salary' => $request->input('salary'),
+        );
+        return response()->json($response);
     }
 
     /**

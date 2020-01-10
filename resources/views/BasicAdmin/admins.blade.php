@@ -83,7 +83,7 @@
                     data: {_token: CSRF_TOKEN, firstname:$('#firstname').val(),lastname:$('#lastname').val(),email:$('#email').val(),password:$('#password').val(),hiredate:$('#hiredate').val(),salary:$('#salary').val()},
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
-                    success: function (data) { 
+                    success: function (data) {
                     	var html = '<tr>' + 
                     	'<td>' + data.first_name + '</td>' + 
                     	'<td>' + data.last_name + '</td>' + 
