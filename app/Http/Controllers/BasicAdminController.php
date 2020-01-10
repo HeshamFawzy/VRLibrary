@@ -128,7 +128,7 @@ class BasicAdminController extends Controller
     public function destroy($id)
     {
         //
-        $admin = User::find($id);
+        $admin = User::where('id', $id)->first();
         $admin->delete();
 
         $admins = DB::table('admins')

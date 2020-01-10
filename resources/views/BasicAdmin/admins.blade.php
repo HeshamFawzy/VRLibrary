@@ -33,7 +33,7 @@
 	        <input type="number" class="form-control" name="salary" id="salary"/>
 	    </div>
 	    <div class="form-group">
-	        <button class="btn btn-primary float-right button">Save</button>
+	        <button class="btn btn-primary float-right" id="save" name="save">Save</button>
 	    </div>
 </div>
 <br>
@@ -62,7 +62,7 @@
 				<td>{{$admin->phone}}</td>
 				<td>
 					<a href="#" class="btn btn-success">Edit</a>
-					<a href="{{ url('/destroy' , $admin->id)}}" class="btn btn-danger">Delete</a>
+					<a href="{{ url('/destroy' , $admin->id)}}" class="btn btn-danger" name="delete">{{$admin->id}}</a>
 				</td>
     </tr>
     @endforeach
@@ -74,7 +74,7 @@
 <script>
         $(document).ready(function(){
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $(".button").click(function(){
+            $("#save").click(function(){
                 $.ajax({
                     /* the route pointing to the post function */
                     url: '/store',
@@ -84,7 +84,7 @@
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) { 
-                    	//console.log(data);
+                    	console.log(data.first_name);
                     }
                 }); 
             });
