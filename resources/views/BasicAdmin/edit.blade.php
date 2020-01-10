@@ -21,7 +21,7 @@
 
 	     <div class="form-group">
 	        <label for="password" class="h4">Password :</label>
-	        <input type="password" class="form-control" name="password" id="password" value="{{$admin->password}}"/>
+	        <input type="password" class="form-control" name="password" id="password" placeholder="New Password" />
 	    </div>
 
 	    <div class="form-group">
@@ -35,7 +35,7 @@
 	    </div>
 	    <div class="form-group">
 	        <button class="btn btn-primary float-right" id="save" name="save">Save</button>
-	        <a href="{{url('/index')}}" class="btn btn-primary">Back</a>
+	        <a href="{{url('/admins')}}" class="btn btn-primary">Back</a>
 	    </div>
 	</div>
 </div>

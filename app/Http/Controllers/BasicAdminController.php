@@ -94,6 +94,7 @@ class BasicAdminController extends Controller
         //
         $admin = DB::table('admins')
         ->where('admins.user_id', '=' , $id)
+        ->join('users' , 'users.id', '=' , 'admins.user_id')
         ->first();
 
         return view('BasicAdmin.edit', ['admin' => $admin]);
