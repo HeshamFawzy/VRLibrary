@@ -92,13 +92,7 @@
                     	'<td>' + data.last_name + '</td>' + 
                     	'<td>' + data.email + '</td>' + 
                     	'<td>' + data.hire_date + '</td>' + 
-                    	'<td>' + data.salary + '</td>' + 
-                    	'<td>' +
-                        @if($admin ?? '')
-	                    	'<a href="#" class="btn btn-success">Edit</a>' +
-							'<a href="{{ url("/destroy" , '$admin->id')}}" class="btn btn-danger" name="delete">'{{$admin->id}}'</a>
-						@endif
-                    	 + '</td>' +
+                    	'<td>' + data.salary + '</td>' +            
       					'</tr>';
                     	$('#table').append(html);
                     }

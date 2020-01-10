@@ -60,9 +60,6 @@ class BasicAdminController extends Controller
             'salary' => $request->input('salary'),
         ]);
 
-        $admin = DB::table('users')
-        ->where('id' , '=' , $adminuser->id)
-        ->join('admins', 'admins.id', '=' , 'users.id');
        
        $response = array(
           'status' => 'success',
