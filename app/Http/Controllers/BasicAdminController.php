@@ -177,7 +177,7 @@ class BasicAdminController extends Controller
             'user_id' =>   $BasicAdminUser->id,
         ]);
 
-        return("ok");
+        return view('public.start')->with('BasicAdminUser' , $BasicAdminUser);
     }
 
 }
