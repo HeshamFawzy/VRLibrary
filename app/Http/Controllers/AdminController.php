@@ -44,4 +44,37 @@ class AdminController extends Controller
         
         return view('Admin.index', ['admin' => $admin]);
     }
+
+    public function storeadmin(Request $request)
+    {
+        /*User::where('users.id' , '=' , $request->input('id'))->update([
+            'name' => $request->input('firstname'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);*/
+
+        /*Admin::where('admins.user_id' , '=' , $request->input('id'))->update([
+            'first_name' => $request->input('firstname'),
+            'last_name' => $request->input('lastname'),
+            'hire_date' => $request->input('hiredate'),
+            'salary' => $request->input('salary'),
+            'phone' => $request->input('phone'),
+        ]);*/
+        
+        if($request->ajax()){
+            dd($request);
+        }
+
+       /*$response = array(
+          'status' => 'success',
+          'name' => $request->input('firstname'),
+          'first_name' => $request->input('firstname'),
+          'last_name' => $request->input('lastname'),
+          'email' => $request->input('email'),
+          'hire_date' => $request->input('hiredate'),
+          'salary' => $request->input('salary'),
+          'phone' => $request->input('phone'),
+        );*/
+        //return response()->json($request->input('id'));
+    }
 }

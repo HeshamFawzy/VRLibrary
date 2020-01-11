@@ -35,7 +35,6 @@ Auth::routes();
 
 Route::get('/start', 'BasicAdminController@start')->name('basicadmin.start');
 
-
 Route::group(["middleware" => ["auth","basicadmin"]], function(){
 
 		Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
@@ -81,5 +80,9 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 	Route::get('/editprofile/{id}', 'AdminController@editprofile')->name('admin.editprofile');
 
 	Route::post('/updateprofile/{id}', 'AdminController@updateprofile')->name('admin.updateprofile');
+
+	Route::post('/storeadmin', 'AdminController@storeadmin')->name('admin.storeadmin');
+
+	Route::get('ajax', function(){ return view('ajax'); });
 
 });

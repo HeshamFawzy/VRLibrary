@@ -12,13 +12,15 @@
 		    	@if($admin ?? '')	
 		        <div class="col-md-8 px-3">
 		            <div class="card-block px-3">
-		            	<p>Welcome :<input class="form-control" value="{{$admin->name}}" id="name" disabled=""></p>
-		            	<p>First Name :<input class="form-control" value="{{$admin->first_name}}" id="firstname" disabled=""></p>
-		            	<p>Last Name :<input class="form-control" value="{{$admin->last_name}}" id="lastname" disabled=""></p>
-		            	<p>Email :<input class="form-control" value="{{$admin->email}}" id="email" disabled=""></p>
-		            	<p>Hire Date :<input class="form-control" value="{{$admin->hire_date}}" id="hiredate" disabled=""></p>
-		            	<p>Salary :<input class="form-control" value="{{$admin->salary}}" id="salary" disabled=""></p>
-		            	<p>Phone :<input class="form-control" value="{{$admin->phone}}" id="phone" disabled=""></p>
+		            	<input class="form-control" value="{{$admin->id}}" id="id">
+		            	<p>Welcome :<input class="form-control" value="{{$admin->name}}" id="name"></p>
+		            	<p>First Name :<input class="form-control" value="{{$admin->first_name}}" id="firstname"></p>
+		            	<p>Last Name :<input class="form-control" value="{{$admin->last_name}}" id="lastname"></p>
+		            	<p>Email :<input class="form-control" value="{{$admin->email}}" id="email"></p>
+		            	<p>Password :<input class="form-control" id="password" placeholder="New Password"></p>
+		            	<p>Hire Date :<input class="form-control" value="{{$admin->hire_date}}" id="hiredate"></p>
+		            	<p>Salary :<input class="form-control" value="{{$admin->salary}}" id="salary"></p>
+		            	<p>Phone :<input class="form-control" value="{{$admin->phone}}" id="phone"></p>
 		            </div>
 		        </div>
 		        <div class="col-md-4">
@@ -27,7 +29,7 @@
 		        </div>
 		        @endif
 		    </div>
-		    <div id="Edit">
+		    <div>
 		     <button class="btn btn-primary float-right" id="save" name="save">Edit</button>
 		    </div>
       	</div>
@@ -38,21 +40,14 @@
             $("#save").click(function(){
                 $.ajax({
                     /* the route pointing to the post function */
-                    url: '/store',
+                    url: '/storeadmin',
                     type: 'POST',
                     /* send the csrf-token and the input to the controller */
-                    data: {_token: CSRF_TOKEN, firstname:$('#firstname').val(),lastname:$('#lastname').val(),email:$('#email').val(),password:$('#password').val(),hiredate:$('#hiredate').val(),salary:$('#salary').val()},
+                    data: {_token: CSRF_TOKEN,id:$('#id').val(),firstname:$('#firstname').val(),lastname:$('#lastname').val(),email:$('#email').val(),hiredate:$('#hiredate').val(),salary:$('#salary').val(),phone:$('#phone').val()},
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {
-                    	var html = '<tr>' + 
-                    	'<td>' + data.first_name + '</td>' + 
-                    	'<td>' + data.last_name + '</td>' + 
-                    	'<td>' + data.email + '</td>' + 
-                    	'<td>' + data.hire_date + '</td>' + 
-                    	'<td>' + data.salary + '</td>' +            
-      					'</tr>';
-                    	$('#table').append(html);
+                    	alert(data);     
                     }
                 }); 
             });
