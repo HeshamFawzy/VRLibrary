@@ -37,7 +37,7 @@ Route::get('/start', 'BasicAdminController@start')->name('basicadmin.start');
 
 Route::group(["middleware" => ["auth","basicadmin"]], function(){
 
-		Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
+		Route::get('/Basicindex', 'BasicAdminController@index')->name('basicadmin.index');
 
 		Route::get('/editportfolio/{id}', 'BasicAdminController@editportfolio')->name('basicadmin.editportfolio');
 
@@ -75,7 +75,7 @@ Route::group(["middleware" => ["auth","basicadmin"]], function(){
 
 Route::group(["middleware" => ["auth","admin"]], function(){
 
-	Route::get('/index', 'AdminController@index')->name('admin.index');
+	Route::get('/Adminindex', 'AdminController@index')->name('admin.index');
 
 	Route::get('/editprofile/{id}', 'AdminController@editprofile')->name('admin.editprofile');
 

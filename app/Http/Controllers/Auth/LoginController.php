@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use DB;
 
 class LoginController extends Controller
 {
@@ -25,6 +26,20 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+    protected function redirectTo()
+    {
+        $admin = DB::table('admins')
+        ->where('admins.user_id' , '=' , auth()->user()->id)
+        ->first();
+
+        if (auth()->user()->email == 'BasicAdmin@BasicAdmin.com') {
+            return '/Basicindex';
+        } else if ($admin != null){
+            return '/Adminindex';
+        }
+    }
+
     protected $redirectTo = '/index';
 
     /**
