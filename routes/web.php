@@ -85,4 +85,12 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 
 	Route::get('ajax', function(){ return view('ajax'); });
 
+	Route::get('/employees', 'BasicAdminController@employees')->name('basicadmin.employees');
+
+	Route::get('/destroyE/{id}', 'BasicAdminController@destroyE')->name('basicadmin.destroyE');
+
+	Route::get('/editE/{id}', 'BasicAdminController@editE')->name('basicadmin.editE');
+
+	Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
+
 });
