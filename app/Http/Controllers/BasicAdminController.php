@@ -10,6 +10,7 @@ use App\BasicAdmin;
 use App\Admin;
 use App\User;
 use App\Employee;
+use App\Member;
 
 class BasicAdminController extends Controller
 {
@@ -239,19 +240,62 @@ class BasicAdminController extends Controller
         return view('BasicAdmin.employees' , ['employees' => $employees]);
     }
 
-    public function destroyE($id)
+    public function Members()
     {
-        //
-        $employee = User::where('id', $id)->first();
-        if($employee != null){
-            $employee->delete();
-        }
-
-        $employees = DB::table('employees')
-        ->join('users', 'users.id', '=' , 'employees.user_id')
+        $members = DB::table('members')
+        ->join('users', 'users.id', '=' , 'members.user_id')
         ->get();
 
-        return view('BasicAdmin.employees')->with('employees' , $employees);
+        return view('BasicAdmin.members')->with('members' , $members);
+    }
+
+    public function editM($id)
+    {
+        //
+        $member = DB::table('members')
+        ->where('members.user_id', '=' , $id)
+        ->join('users' , 'users.id', '=' , 'members.user_id')
+        ->first();
+
+        return view('BasicAdmin.editM', ['member' => $member]);
+    }
+
+    public function updateM(Request $request, $id)
+    {
+
+        User::where('users.id' , '=' , $id)->update([
+            "email"                     => $request->input('email'),
+            "password"                  => bcrypt($request->input('password')),
+        ]);
+
+        Member::where('members.user_id' , '=' , $id)->update([
+            "first_name"                => $request->input('firstname'),
+            "last_name"                 => $request->input('lastname'),
+            "hire_date"                 => $request->input('hiredate'),
+            "salary"                    => $request->input('salary'),
+            "phone"                     => $request->input('phone'),
+        ]);
+
+        $members = DB::table('members')
+        ->join('users', 'users.id', '=' , 'members.user_id')
+        ->get();
+
+        return view('BasicAdmin.members' , ['members' => $members]);
+    }
+
+    public function destroyM($id)
+    {
+        //
+        $member = User::where('id', $id)->first();
+        if($member != null){
+            $member->delete();
+        }
+
+        $members = DB::table('members')
+        ->join('users', 'users.id', '=' , 'members.user_id')
+        ->get();
+
+        return view('BasicAdmin.members')->with('members' , $members);
 
     }
 

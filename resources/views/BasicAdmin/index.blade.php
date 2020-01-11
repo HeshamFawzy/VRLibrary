@@ -6,7 +6,7 @@
 	      <div class="list-group list-group-flush">
 	        <a href="{{ url('admins')}}" class="list-group-item list-group-item-action bg-light">Admins</a>
 	        <a href="{{ url('employees')}}" class="list-group-item list-group-item-action bg-light">Employees</a>
-	        <a href="#" class="list-group-item list-group-item-action bg-light">Members</a>
+	        <a href="{{ url('members')}}" class="list-group-item list-group-item-action bg-light">Members</a>
 	      </div>
     	</div>
 		<div class="card p-2">

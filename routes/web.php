@@ -60,3 +60,11 @@ Route::get('/destroyE/{id}', 'BasicAdminController@destroyE')->name('basicadmin.
 Route::get('/editE/{id}', 'BasicAdminController@editE')->name('basicadmin.editE');
 
 Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
+
+Route::get('/members', 'BasicAdminController@members')->name('basicadmin.members');
+
+Route::get('/destroyM/{id}', 'BasicAdminController@destroyM')->name('basicadmin.destroyM');
+
+Route::get('/editM/{id}', 'BasicAdminController@editM')->name('basicadmin.editM');
+
+Route::post('/updateM/{id}', 'BasicAdminController@updateM')->name('basicadmin.updateM');
