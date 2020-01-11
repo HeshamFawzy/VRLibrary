@@ -3,6 +3,7 @@
 @section('content')
 <div class="row p-1 m-2 d-flex justify-content-center">
 	<div class="col-8 p-2" style="background-color: white;">
+  <a href="{{url('/index')}}" class="btn btn-primary float-right">Back</a>
 	<h1 class="text-center">Employees</h1>
 	<table class="table table-hover">
   <thead>

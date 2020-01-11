@@ -35,36 +35,41 @@ Auth::routes();
 
 Route::get('/start', 'BasicAdminController@start')->name('basicadmin.start');
 
-Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
 
-Route::get('/editportfolio/{id}', 'BasicAdminController@editportfolio')->name('basicadmin.editportfolio');
+Route::group(["middleware" => ["auth","basicadmin"]], function(){
 
-Route::post('/updateportfolio/{id}', 'BasicAdminController@updateportfolio')->name('basicadmin.updateportfolio');
+		Route::get('/index', 'BasicAdminController@index')->name('basicadmin.index');
 
-Route::get('/admins', 'BasicAdminController@admins')->name('basicadmin.admins');
+		Route::get('/editportfolio/{id}', 'BasicAdminController@editportfolio')->name('basicadmin.editportfolio');
 
-Route::post('/store', 'BasicAdminController@store')->name('basicadmin.store');
+		Route::post('/updateportfolio/{id}', 'BasicAdminController@updateportfolio')->name('basicadmin.updateportfolio');
 
-Route::get('ajax', function(){ return view('ajax'); });
+		Route::get('/admins', 'BasicAdminController@admins')->name('basicadmin.admins');
 
-Route::get('/destroy/{id}', 'BasicAdminController@destroy')->name('basicadmin.destroy');
+		Route::post('/store', 'BasicAdminController@store')->name('basicadmin.store');
 
-Route::get('/edit/{id}', 'BasicAdminController@edit')->name('basicadmin.edit');
+		Route::get('ajax', function(){ return view('ajax'); });
 
-Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.update');
+		Route::get('/destroy/{id}', 'BasicAdminController@destroy')->name('basicadmin.destroy');
 
-Route::get('/employees', 'BasicAdminController@employees')->name('basicadmin.employees');
+		Route::get('/edit/{id}', 'BasicAdminController@edit')->name('basicadmin.edit');
 
-Route::get('/destroyE/{id}', 'BasicAdminController@destroyE')->name('basicadmin.destroyE');
+		Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.update');
 
-Route::get('/editE/{id}', 'BasicAdminController@editE')->name('basicadmin.editE');
+		Route::get('/employees', 'BasicAdminController@employees')->name('basicadmin.employees');
 
-Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
+		Route::get('/destroyE/{id}', 'BasicAdminController@destroyE')->name('basicadmin.destroyE');
 
-Route::get('/members', 'BasicAdminController@members')->name('basicadmin.members');
+		Route::get('/editE/{id}', 'BasicAdminController@editE')->name('basicadmin.editE');
 
-Route::get('/destroyM/{id}', 'BasicAdminController@destroyM')->name('basicadmin.destroyM');
+		Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
 
-Route::get('/editM/{id}', 'BasicAdminController@editM')->name('basicadmin.editM');
+		Route::get('/members', 'BasicAdminController@members')->name('basicadmin.members');
 
-Route::post('/updateM/{id}', 'BasicAdminController@updateM')->name('basicadmin.updateM');
+		Route::get('/destroyM/{id}', 'BasicAdminController@destroyM')->name('basicadmin.destroyM');
+
+		Route::get('/editM/{id}', 'BasicAdminController@editM')->name('basicadmin.editM');
+
+		Route::post('/updateM/{id}', 'BasicAdminController@updateM')->name('basicadmin.updateM');
+
+});
