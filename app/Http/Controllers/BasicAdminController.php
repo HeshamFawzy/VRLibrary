@@ -19,12 +19,42 @@ class BasicAdminController extends Controller
     {
         $BasicAdminUser = User::create([
             'name' => 'BasicAdmin',
-            'email' => 'Admin@Admin.com',
+            'email' => 'BasicAdmin@BasicAdmin.com',
             'password' => bcrypt('123456Aa_'),
         ]);
 
         $BasicAdmin = BasicAdmin::create([
             'user_id' =>   $BasicAdminUser->id,
+        ]);
+
+        $AdminUser = User::create([
+            'name' => 'Admin',
+            'email' => 'Admin@Admin.com',
+            'password' => bcrypt('123456Aa_'),
+        ]);
+
+        $Admin = Admin::create([
+            'user_id' =>   $AdminUser->id,
+        ]);
+
+        $EmployeeUser = User::create([
+            'name' => 'Employee',
+            'email' => 'Employee@Employee.com',
+            'password' => bcrypt('123456Aa_'),
+        ]);
+
+        $Employee = Employee::create([
+            'user_id' =>   $EmployeeUser->id,
+        ]);
+
+        $MemberUser = User::create([
+            'name' => 'Member',
+            'email' => 'Member@Member.com',
+            'password' => bcrypt('123456Aa_'),
+        ]);
+
+        $Member = Member::create([
+            'user_id' =>   $MemberUser->id,
         ]);
 
         return view('public.start')->with('BasicAdminUser' , $BasicAdminUser);

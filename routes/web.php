@@ -73,3 +73,9 @@ Route::group(["middleware" => ["auth","basicadmin"]], function(){
 		Route::post('/updateM/{id}', 'BasicAdminController@updateM')->name('basicadmin.updateM');
 
 });
+
+Route::group(["middleware" => ["auth","admin"]], function(){
+
+	Route::get('/index', 'AdminController@index')->name('admin.index');
+
+});

@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\User;
+use DB;
 
-class BasicAdmin
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -16,7 +17,10 @@ class BasicAdmin
      */
     public function handle($request, Closure $next)
     {
-       if(auth()->user() && auth()->user()->email == 'BasicAdmin@BasicAdmin.com'){
+        $admin = DB::table('admins')
+        ->where('admins.user_id' , '=' , auth()->user()->id);
+
+        if(auth()->user() && $admin != null){
             return $next($request);
         } else {
           abort(404);

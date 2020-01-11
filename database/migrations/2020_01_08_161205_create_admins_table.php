@@ -23,6 +23,9 @@ class CreateAdminsTable extends Migration
             $table->date('hire_date')->nullable();
             $table->string('salary')->nullable();
             $table->string('phone')->nullable();
+            $table->string('filename')->nullable();
+            $table->string('mime')->nullable();
+            $table->string('original_filename')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
