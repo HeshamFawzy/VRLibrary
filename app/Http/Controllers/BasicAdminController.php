@@ -14,11 +14,25 @@ use App\Member;
 
 class BasicAdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //start
+    public function Start()
+    {
+        $BasicAdminUser = User::create([
+            'name' => 'BasicAdmin',
+            'email' => 'Admin@Admin.com',
+            'password' => bcrypt('123456Aa_'),
+        ]);
+
+        $BasicAdmin = BasicAdmin::create([
+            'user_id' =>   $BasicAdminUser->id,
+        ]);
+
+        return view('public.start')->with('BasicAdminUser' , $BasicAdminUser);
+    }
+
+
+    //portfolio
+    ////////////////////////////////////////////////////////////////////////////////////////////
     public function index()
     {
         //
@@ -27,131 +41,6 @@ class BasicAdminController extends Controller
         ->first();
 
         return view('BasicAdmin.index', ['basicadmin' => $basicadmin]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $adminuser = User::create([
-            'name' => $request->input('firstname'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-        ]);
-
-        $admin = Admin::create([
-            'user_id' => $adminuser->id,
-            'first_name' => $request->input('firstname'),
-            'last_name' => $request->input('lastname'),
-            'hire_date' => $request->input('hiredate'),
-            'salary' => $request->input('salary'),
-        ]);
-
-       
-       $response = array(
-          'status' => 'success',
-          'first_name' => $request->input('firstname'),
-          'last_name' => $request->input('lastname'),
-          'email' => $request->input('email'),
-          'hire_date' => $request->input('hiredate'),
-          'salary' => $request->input('salary'),
-        );
-        return response()->json($response);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        $admin = DB::table('admins')
-        ->where('admins.user_id', '=' , $id)
-        ->join('users' , 'users.id', '=' , 'admins.user_id')
-        ->first();
-
-        return view('BasicAdmin.edit', ['admin' => $admin]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-
-        User::where('users.id' , '=' , $id)->update([
-            "email"                     => $request->input('email'),
-            "password"                  => bcrypt($request->input('password')),
-        ]);
-
-        Admin::where('admins.user_id' , '=' , $id)->update([
-            "first_name"                => $request->input('firstname'),
-            "last_name"                 => $request->input('lastname'),
-            "hire_date"                 => $request->input('hiredate'),
-            "salary"                    => $request->input('salary'),
-            "phone"                     => $request->input('phone'),
-        ]);
-
-        $admins = DB::table('admins')
-        ->join('users', 'users.id', '=' , 'admins.user_id')
-        ->get();
-
-        return view('BasicAdmin.admins' , ['admins' => $admins]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $admin = User::where('id', $id)->first();
-        if($admin != null){
-            $admin->delete();
-        }
-
-        $admins = DB::table('admins')
-        ->join('users', 'users.id', '=' , 'admins.user_id')
-        ->get();
-
-        return view('BasicAdmin.admins')->with('admins' , $admins);
-
     }
 
     public function editportfolio($id)
@@ -185,9 +74,9 @@ class BasicAdminController extends Controller
         ->first();
         return view('BasicAdmin.index', ['basicadmin' => $basicadmin]);
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
+    //Admins
     public function Admins()
     {
         $admins = DB::table('admins')
@@ -197,6 +86,89 @@ class BasicAdminController extends Controller
         return view('BasicAdmin.admins')->with('admins' , $admins);
     }
 
+    public function store(Request $request)
+    {
+
+        $adminuser = User::create([
+            'name' => $request->input('firstname'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        $admin = Admin::create([
+            'user_id' => $adminuser->id,
+            'first_name' => $request->input('firstname'),
+            'last_name' => $request->input('lastname'),
+            'hire_date' => $request->input('hiredate'),
+            'salary' => $request->input('salary'),
+        ]);
+
+       
+       $response = array(
+          'status' => 'success',
+          'first_name' => $request->input('firstname'),
+          'last_name' => $request->input('lastname'),
+          'email' => $request->input('email'),
+          'hire_date' => $request->input('hiredate'),
+          'salary' => $request->input('salary'),
+        );
+        return response()->json($response);
+    }
+
+    public function edit($id)
+    {
+        //
+        $admin = DB::table('admins')
+        ->where('admins.user_id', '=' , $id)
+        ->join('users' , 'users.id', '=' , 'admins.user_id')
+        ->first();
+
+        return view('BasicAdmin.edit', ['admin' => $admin]);
+    }
+
+   
+    public function update(Request $request, $id)
+    {
+
+        User::where('users.id' , '=' , $id)->update([
+            "email"                     => $request->input('email'),
+            "password"                  => bcrypt($request->input('password')),
+        ]);
+
+        Admin::where('admins.user_id' , '=' , $id)->update([
+            "first_name"                => $request->input('firstname'),
+            "last_name"                 => $request->input('lastname'),
+            "hire_date"                 => $request->input('hiredate'),
+            "salary"                    => $request->input('salary'),
+            "phone"                     => $request->input('phone'),
+        ]);
+
+        $admins = DB::table('admins')
+        ->join('users', 'users.id', '=' , 'admins.user_id')
+        ->get();
+
+        return view('BasicAdmin.admins' , ['admins' => $admins]);
+    }
+      
+    public function destroy($id)
+    {
+        //
+        $admin = User::where('id', $id)->first();
+        if($admin != null){
+            $admin->delete();
+        }
+
+        $admins = DB::table('admins')
+        ->join('users', 'users.id', '=' , 'admins.user_id')
+        ->get();
+
+        return view('BasicAdmin.admins')->with('admins' , $admins);
+
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Employees
+    ////////////////////////////////////////////////////////////////////////////////////////////
     public function Employees()
     {
         $employees = DB::table('employees')
@@ -240,6 +212,25 @@ class BasicAdminController extends Controller
         return view('BasicAdmin.employees' , ['employees' => $employees]);
     }
 
+     public function destroyE($id)
+    {
+        //
+        $employee = User::where('id', $id)->first();
+        if($employee != null){
+            $employee->delete();
+        }
+
+        $employees = DB::table('employees')
+        ->join('users', 'users.id', '=' , 'employees.user_id')
+        ->get();
+
+        return view('BasicAdmin.employees')->with('employees' , $employees);
+
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Members
+    ////////////////////////////////////////////////////////////////////////////////////////////
     public function Members()
     {
         $members = DB::table('members')
@@ -298,23 +289,5 @@ class BasicAdminController extends Controller
         return view('BasicAdmin.members')->with('members' , $members);
 
     }
-
-
-
-
-    public function Start()
-    {
-        $BasicAdminUser = User::create([
-            'name' => 'BasicAdmin',
-            'email' => 'Admin@Admin.com',
-            'password' => bcrypt('123456Aa_'),
-        ]);
-
-        $BasicAdmin = BasicAdmin::create([
-            'user_id' =>   $BasicAdminUser->id,
-        ]);
-
-        return view('public.start')->with('BasicAdminUser' , $BasicAdminUser);
-    }
-
+    ////////////////////////////////////////////////////////////////////////////////////////////
 }
