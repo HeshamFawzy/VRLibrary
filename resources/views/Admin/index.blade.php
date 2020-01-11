@@ -23,10 +23,10 @@
 		        </div>
 		        <div class="col-md-4">
 		            	<img src="{{url('uploads/'.$admin->filename)}}" class="rounded-circle mr-5" style="width: 150px;">
+		            	<a class="btn btn-secondary" href="{{ route('admin.editprofile', $admin->id)}}">Add Profile Picture</a>
 		        </div>
 		        @endif
 		    </div>
-		    <a class="btn btn-primary" href="{{ route('admin.editportfolio', $admin->id)}}">Edit</a>
       	</div>
 	</div>
 @endsection
