@@ -12,13 +12,13 @@
 		    	@if($admin ?? '')	
 		        <div class="col-md-8 px-3">
 		            <div class="card-block px-3">
-		            	<p>Welcome :<span> {{$admin->name}}</span></p>
-		            	<p>First Name :<span> {{$admin->first_name}}</span></p>
-		            	<p>Last Name :<span> {{$admin->last_name}}</span></p>
-		            	<p>Email :<span> {{$admin->email}}</span></p>
-		            	<p>Hire Date :<span> {{$admin->hire_date}}</span></p>
-		            	<p>Salary :<span> {{$admin->salary}}</span></p>
-		            	<p>Phone :<span> {{$admin->phone}}</span></p>
+		            	<p>Welcome :<input class="form-control" value="{{$admin->name}}" id="name" disabled=""></p>
+		            	<p>First Name :<input class="form-control" value="{{$admin->first_name}}" id="firstname" disabled=""></p>
+		            	<p>Last Name :<input class="form-control" value="{{$admin->last_name}}" id="lastname" disabled=""></p>
+		            	<p>Email :<input class="form-control" value="{{$admin->email}}" id="email" disabled=""></p>
+		            	<p>Hire Date :<input class="form-control" value="{{$admin->hire_date}}" id="hiredate" disabled=""></p>
+		            	<p>Salary :<input class="form-control" value="{{$admin->salary}}" id="salary" disabled=""></p>
+		            	<p>Phone :<input class="form-control" value="{{$admin->phone}}" id="phone" disabled=""></p>
 		            </div>
 		        </div>
 		        <div class="col-md-4">
@@ -27,6 +27,35 @@
 		        </div>
 		        @endif
 		    </div>
+		    <div id="Edit">
+		     <button class="btn btn-primary float-right" id="save" name="save">Edit</button>
+		    </div>
       	</div>
 	</div>
+	<script>
+        $(document).ready(function(){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $("#save").click(function(){
+                $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/store',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {_token: CSRF_TOKEN, firstname:$('#firstname').val(),lastname:$('#lastname').val(),email:$('#email').val(),password:$('#password').val(),hiredate:$('#hiredate').val(),salary:$('#salary').val()},
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function (data) {
+                    	var html = '<tr>' + 
+                    	'<td>' + data.first_name + '</td>' + 
+                    	'<td>' + data.last_name + '</td>' + 
+                    	'<td>' + data.email + '</td>' + 
+                    	'<td>' + data.hire_date + '</td>' + 
+                    	'<td>' + data.salary + '</td>' +            
+      					'</tr>';
+                    	$('#table').append(html);
+                    }
+                }); 
+            });
+       });    
+</script>
 @endsection
