@@ -118,9 +118,6 @@ class BasicAdminController extends Controller
 
     public function store(Request $request)
     {
-        if($request->ajax()){
-            dd($request);
-        }
 
         $adminuser = User::create([
             'name' => $request->input('firstname'),

@@ -12,15 +12,15 @@
 		    	@if($admin ?? '')	
 		        <div class="col-md-8 px-3">
 		            <div class="card-block px-3">
-		            	<input class="form-control" value="{{$admin->id}}" id="id">
-		            	<p>Welcome :<input class="form-control" value="{{$admin->name}}" id="name"></p>
-		            	<p>First Name :<input class="form-control" value="{{$admin->first_name}}" id="firstname"></p>
-		            	<p>Last Name :<input class="form-control" value="{{$admin->last_name}}" id="lastname"></p>
-		            	<p>Email :<input class="form-control" value="{{$admin->email}}" id="email"></p>
-		            	<p>Password :<input class="form-control" id="password" placeholder="New Password"></p>
-		            	<p>Hire Date :<input class="form-control" value="{{$admin->hire_date}}" id="hiredate"></p>
-		            	<p>Salary :<input class="form-control" value="{{$admin->salary}}" id="salary"></p>
-		            	<p>Phone :<input class="form-control" value="{{$admin->phone}}" id="phone"></p>
+		            	<input class="form-control" value="{{$admin->id}}" id="id" hidden="">
+		            	<p>Welcome :<input type="text" class="form-control" value="{{$admin->name}}" id="name"></p>
+		            	<p>First Name :<input type="text" class="form-control" value="{{$admin->first_name}}" id="firstname"></p>
+		            	<p>Last Name :<input type="text" class="form-control" value="{{$admin->last_name}}" id="lastname"></p>
+		            	<p>Email :<input type="email" class="form-control" value="{{$admin->email}}" id="email"></p>
+		            	<p>Password :<input type="password" class="form-control" id="password" placeholder="New Password"></p>
+		            	<p>Hire Date :<input type="date" class="form-control" value="{{$admin->hire_date}}" id="hiredate"></p>
+		            	<p>Salary :<input type="number" class="form-control" value="{{$admin->salary}}" id="salary"></p>
+		            	<p>Phone :<input type="number" class="form-control" value="{{$admin->phone}}" id="phone"></p>
 		            </div>
 		        </div>
 		        <div class="col-md-4">
@@ -47,8 +47,19 @@
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {
-                    	alert(data);     
-                    }
+                    	alert("success");
+            			alert(data);    
+                    },
+                    error: function(xhr, status, error) {
+			            console.log(xhr);
+			            if (xhr == 'undefined' || xhr == undefined) {
+			                alert('undefined');
+			            } else {
+			                alert('object is there');
+			            }
+			            alert(status);
+			            alert(error);
+        			}
                 }); 
             });
        });    

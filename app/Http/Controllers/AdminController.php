@@ -7,6 +7,7 @@ use DB;
 use Illuminate\Support\Facades\Storage;
 use File;
 use App\Admin;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -47,25 +48,21 @@ class AdminController extends Controller
 
     public function storeadmin(Request $request)
     {
-        /*User::where('users.id' , '=' , $request->input('id'))->update([
+        User::where('users.id' , '=' , $request->input('id'))->update([
             'name' => $request->input('firstname'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-        ]);*/
+        ]);
 
-        /*Admin::where('admins.user_id' , '=' , $request->input('id'))->update([
+        Admin::where('admins.user_id' , '=' , $request->input('id'))->update([
             'first_name' => $request->input('firstname'),
             'last_name' => $request->input('lastname'),
             'hire_date' => $request->input('hiredate'),
             'salary' => $request->input('salary'),
             'phone' => $request->input('phone'),
-        ]);*/
+        ]);
         
-        if($request->ajax()){
-            dd($request);
-        }
-
-       /*$response = array(
+        $response = array(
           'status' => 'success',
           'name' => $request->input('firstname'),
           'first_name' => $request->input('firstname'),
@@ -74,7 +71,8 @@ class AdminController extends Controller
           'hire_date' => $request->input('hiredate'),
           'salary' => $request->input('salary'),
           'phone' => $request->input('phone'),
-        );*/
-        //return response()->json($request->input('id'));
+        );
+
+        return response()->json($response);
     }
 }
