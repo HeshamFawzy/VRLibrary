@@ -55,14 +55,6 @@ Route::group(["middleware" => ["auth","basicadmin"]], function(){
 
 		Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.update');
 
-		Route::get('/employees', 'BasicAdminController@employees')->name('basicadmin.employees');
-
-		Route::get('/destroyE/{id}', 'BasicAdminController@destroyE')->name('basicadmin.destroyE');
-
-		Route::get('/editE/{id}', 'BasicAdminController@editE')->name('basicadmin.editE');
-
-		Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
-
 		Route::get('/members', 'BasicAdminController@members')->name('basicadmin.members');
 
 		Route::get('/destroyM/{id}', 'BasicAdminController@destroyM')->name('basicadmin.destroyM');
@@ -85,14 +77,6 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 
 	Route::get('ajax', function(){ return view('ajax'); });
 
-	Route::get('/employees', 'BasicAdminController@employees')->name('basicadmin.employees');
-
-	Route::get('/destroyE/{id}', 'BasicAdminController@destroyE')->name('basicadmin.destroyE');
-
-	Route::get('/editE/{id}', 'BasicAdminController@editE')->name('basicadmin.editE');
-
-	Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
-
 	Route::post('/search', 'AdminController@search')->name('admin.search');
 
 	Route::get('/books', 'AdminController@books')->name('admin.books');
@@ -103,4 +87,15 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 
 	Route::post('/updateB/{id}', 'AdminController@updateB')->name('admin.updateB');
 
+});
+
+Route::group(["middleware" => ["auth","comman"]], function(){
+		
+		Route::get('/employees', 'BasicAdminController@employees')->name('basicadmin.employees');
+
+		Route::get('/destroyE/{id}', 'BasicAdminController@destroyE')->name('basicadmin.destroyE');
+
+		Route::get('/editE/{id}', 'BasicAdminController@editE')->name('basicadmin.editE');
+
+		Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
 });
