@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use File;
 use App\Admin;
 use App\User;
+use App\Employee;
 
 class AdminController extends Controller
 {
@@ -74,5 +75,26 @@ class AdminController extends Controller
         );
 
         return response()->json($response);
+    }
+
+    public function search(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+
+            $data = DB::table('employees')
+            ->where('first_name','LIKE', "%{$query}%")
+            ->get();
+
+            $output = '<ul class="dropdown-menu" style="display:block;position:relative">';
+
+            foreach($data as $row){
+                $output .= '<li><a href="#">' .$row->first_name. '</a></li>';
+            }
+
+            $output .= '</ul>';
+            echo $output;
+        }
     }
 }

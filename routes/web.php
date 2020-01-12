@@ -93,4 +93,6 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 
 	Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
 
+	Route::post('/search', 'AdminController@search')->name('admin.search');
+
 });

@@ -5,8 +5,12 @@
 	<div class="col-8 p-2" style="background-color: white;">
   <a href="{{url('/index')}}" class="btn btn-primary float-right">Back</a>
 	<h1 class="text-center">Employees</h1>
-  @if(auth()->user() && $admin != null)
-        
+  @if(auth()->user()->email != 'BasicAdmin@BasicAdmin.com')
+    <div class="form-group">
+      <input type="text" name="firstname" id="firstname" class="col-3 form-control" placeholder="Search By Employee First Name">
+      <div id="names"></div>
+    </div>
+    {{ csrf_field() }}
   @endif
 	<table class="table table-hover">
   <thead>
@@ -21,7 +25,7 @@
     </tr>
   </thead>
   <tbody id="table">
-  	@if(count($employees) > 0)
+  @if(count($employees) > 0)
 	@foreach($employees as $employee)
     <tr>
 				<td>{{$employee->first_name}}</td>
@@ -63,6 +67,38 @@
                     	'<td>' + data.salary + '</td>' +            
       					'</tr>';
                     	$('#table').append(html);
+                    }
+                }); 
+            });
+       });    
+</script>
+
+<script>
+        $(document).ready(function(){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $("#firstname").keyup(function(){
+                $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/search',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {_token: CSRF_TOKEN, query:$(this).val()},
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function (data) {
+                      alert("success");
+                      alert(data);
+                      $('#names').fadeIn();
+                      $('#names').html(data);  
+                    },
+                    error: function(xhr, status, error) {
+                      console.log(xhr);
+                      if (xhr == 'undefined' || xhr == undefined) {
+                          alert('undefined');
+                      } else {
+                          alert('object is there');
+                      }
+                      alert(status);
+                      alert(error);
                     }
                 }); 
             });

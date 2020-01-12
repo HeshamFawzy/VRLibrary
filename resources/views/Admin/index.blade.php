@@ -48,7 +48,7 @@
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {
                     	alert("success");
-            			alert(data);    
+            			alert(data.firstname);    
                     },
                     error: function(xhr, status, error) {
 			            console.log(xhr);
