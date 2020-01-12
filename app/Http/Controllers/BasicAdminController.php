@@ -22,6 +22,7 @@ class BasicAdminController extends Controller
             'name' => 'BasicAdmin',
             'email' => 'BasicAdmin@BasicAdmin.com',
             'password' => bcrypt('123456Aa_'),
+            'role' => 'BasicAdmin',
         ]);
 
         $BasicAdmin = BasicAdmin::create([
@@ -32,6 +33,7 @@ class BasicAdminController extends Controller
             'name' => 'Admin',
             'email' => 'Admin@Admin.com',
             'password' => bcrypt('123456Aa_'),
+            'role' => 'Admin',
         ]);
 
         $Admin = Admin::create([
@@ -42,6 +44,7 @@ class BasicAdminController extends Controller
             'name' => 'Employee',
             'email' => 'Employee@Employee.com',
             'password' => bcrypt('123456Aa_'),
+            'role' => 'Employee',
         ]);
 
         $Employee = Employee::create([
@@ -52,6 +55,7 @@ class BasicAdminController extends Controller
             'name' => 'Member',
             'email' => 'Member@Member.com',
             'password' => bcrypt('123456Aa_'),
+            'role' => 'Member',
         ]);
 
         $Member = Member::create([

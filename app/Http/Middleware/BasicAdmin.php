@@ -16,7 +16,7 @@ class BasicAdmin
      */
     public function handle($request, Closure $next)
     {
-       if(auth()->user() && auth()->user()->email == 'BasicAdmin@BasicAdmin.com'){
+       if(auth()->user()->role == 'BasicAdmin'){
             return $next($request);
         } else {
           abort(404);

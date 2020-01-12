@@ -17,10 +17,8 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        $admin = DB::table('admins')
-        ->where('admins.user_id' , '=' , auth()->user()->id);
 
-        if(auth()->user() && $admin != null){
+        if(auth()->user()->role == 'Admin'){
             return $next($request);
         } else {
           abort(404);

@@ -29,13 +29,9 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        $admin = DB::table('admins')
-        ->where('admins.user_id' , '=' , auth()->user()->id)
-        ->first();
-
-        if (auth()->user()->email == 'BasicAdmin@BasicAdmin.com') {
+        if (auth()->user()->role == 'BasicAdmin') {
             return '/Basicindex';
-        } else if ($admin != null){
+        } else if (auth()->user()->role == 'Admin'){
             return '/Adminindex';
         }
     }
