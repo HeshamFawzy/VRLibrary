@@ -205,7 +205,11 @@ class BasicAdminController extends Controller
         ->join('users', 'users.id', '=' , 'employees.user_id')
         ->get();
 
-        return view('BasicAdmin.employees')->with('employees' , $employees);
+        $admin = DB::table('admins')
+        ->where('admins.user_id' , '=' , auth()->user()->id)
+        ->first();
+
+        return view('BasicAdmin.employees')->with('employees' , $employees)->with('admin' , $admin);
     }
 
     public function editE($id)
