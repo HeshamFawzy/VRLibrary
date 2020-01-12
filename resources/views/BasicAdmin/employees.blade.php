@@ -2,15 +2,17 @@
 
 @section('content')
 <div class="row p-1 m-2 d-flex justify-content-center">
-	<div class="col-8 p-2" style="background-color: white;">
-  <a href="{{url('/index')}}" class="btn btn-primary float-right">Back</a>
-	<h1 class="text-center">Employees</h1>
+	<div class="col-8 p-2" style="background-color: white">
+  <h1 class="text-center">Employees</h1>
   @if(auth()->user()->email != 'BasicAdmin@BasicAdmin.com')
+  <a href="{{ route('admin.index')}}" class="btn btn-primary float-right">Back</a>
     <div class="form-group">
       <input type="text" name="firstname" id="firstname" class="col-4 form-control" placeholder="Search By Employee First Name">
       <div id="names"></div>
     </div>
     {{ csrf_field() }}
+  @else
+    <a href="{{ route('basicadmin.index')}}" class="btn btn-primary float-right">Back</a>
   @endif
 	<table class="table table-hover">
   <thead>

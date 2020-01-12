@@ -95,4 +95,6 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 
 	Route::post('/search', 'AdminController@search')->name('admin.search');
 
+	Route::get('/books', 'AdminController@books')->name('admin.books');
+
 });
