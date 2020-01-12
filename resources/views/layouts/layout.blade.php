@@ -21,10 +21,12 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('aboutus')}}">About Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('contactus')}}">Contact Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('loginR')}}">Login</a></li>
-                    @if(auth()->user()->role == 'BasicAdmin')
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/Basicindex')}}">Profile</a></li>
-                    @else
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/Adminindex')}}">Profile</a></li>
+                    @if(auth()->user() != null)
+                        @if(auth()->user()->role == 'BasicAdmin')
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/Basicindex')}}">Profile</a></li>
+                        @else
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/Adminindex')}}">Profile</a></li>
+                        @endif
                     @endif
                 </ul>
             </div>
