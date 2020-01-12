@@ -98,4 +98,13 @@ class AdminController extends Controller
             echo $output;
         }
     }
+
+    public function books()
+    {
+            //
+        $books = DB::table('books')
+        ->get();
+
+        return view('Admin.books', ['books' => $books]);
+    }
 }
