@@ -85,12 +85,13 @@ class AdminController extends Controller
 
             $data = DB::table('employees')
             ->where('first_name','LIKE', "%{$query}%")
+            ->join('users' , 'users.id' , '=' , 'employees.user_id')
             ->get();
 
-            $output = '<ul class="dropdown-menu" style="display:block;position:relative">';
+            $output = '<ul class="dropdown-menu" style="display:block;position:relative;text-align:center;">';
 
             foreach($data as $row){
-                $output .= '<li><a href="#">' .$row->first_name. '</a></li>';
+                $output .= '<li><p class="alert-light pl-2 pr-2">'. "Name : " .$row->first_name."   Phone : ".$row->phone. "   Email : " .$row->email. '</p></li>';
             }
 
             $output .= '</ul>';

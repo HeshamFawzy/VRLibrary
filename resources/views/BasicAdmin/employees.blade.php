@@ -7,7 +7,7 @@
 	<h1 class="text-center">Employees</h1>
   @if(auth()->user()->email != 'BasicAdmin@BasicAdmin.com')
     <div class="form-group">
-      <input type="text" name="firstname" id="firstname" class="col-3 form-control" placeholder="Search By Employee First Name">
+      <input type="text" name="firstname" id="firstname" class="col-4 form-control" placeholder="Search By Employee First Name">
       <div id="names"></div>
     </div>
     {{ csrf_field() }}
@@ -85,10 +85,8 @@
                     data: {_token: CSRF_TOKEN, query:$(this).val()},
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {
-                      alert("success");
-                      alert(data);
                       $('#names').fadeIn();
-                      $('#names').html(data);  
+                      $('#names').html(data);
                     },
                     error: function(xhr, status, error) {
                       console.log(xhr);
@@ -100,7 +98,7 @@
                       alert(status);
                       alert(error);
                     }
-                }); 
+                });
             });
        });    
 </script>
