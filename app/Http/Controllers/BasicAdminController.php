@@ -11,6 +11,7 @@ use App\Admin;
 use App\User;
 use App\Employee;
 use App\Member;
+use App\Book;
 
 class BasicAdminController extends Controller
 {
@@ -55,6 +56,19 @@ class BasicAdminController extends Controller
 
         $Member = Member::create([
             'user_id' =>   $MemberUser->id,
+        ]);
+
+        $Book = Book::create([
+            'title' =>              'title',
+            'auther' =>             'auther',
+            'publisher' =>          'publisher',
+            'publishing_date' =>    'publishing_date',
+            'category' =>           'category',
+            'edition' =>            'edition',
+            'pages' =>              'pages',
+            'no_of_copies' =>       'no_of_copies',
+            'avilable' =>           'avilable',
+            'shelf_Number' =>       'shelf_Number',
         ]);
 
         return view('public.start')->with('BasicAdminUser' , $BasicAdminUser);

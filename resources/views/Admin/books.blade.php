@@ -6,16 +6,16 @@
 	<table class="table table-hover">
   <thead>
     <tr>
-      <th>Book Title</th>
-      <th>Book Auther</th>
-      <th>Book Publisher</th>
-      <th>Book Publishing Date</th>
-      <th>Book Category</th>
-      <th>Book Edition</th>
-      <th>Book Pages</th>
-      <th>Book No Of Copies</th>
-      <th>Book Avilable</th>
-      <th>Book Shelf Number</th>
+      <th>Title</th>
+      <th>Auther</th>
+      <th>Publisher</th>
+      <th>Publishing Date</th>
+      <th>Category</th>
+      <th>Edition</th>
+      <th>Pages</th>
+      <th>No Of Copies</th>
+      <th>Avilable</th>
+      <th>Shelf Number</th>
       <th colspan="2">Modify</th>
     </tr>
   </thead>
@@ -34,8 +34,8 @@
 				<td>{{$book->avilable}}</td>
 				<td>{{$book->shelf_Number}}</td>
 				<td>
-					<a href="{{ url('/edit' , $book->id)}}" class="btn btn-success">Edit</a>
-					<a href="{{ url('/destroy' , $book->id)}}" class="btn btn-danger" name="delete">Delete</a>
+					<a href="{{ url('/editB' , $book->id)}}" class="btn btn-success">Edit</a>
+					<a href="{{ url('/destroyB' , $book->id)}}" class="btn btn-danger" name="delete">Delete</a>
 				</td>
     </tr>
     @endforeach

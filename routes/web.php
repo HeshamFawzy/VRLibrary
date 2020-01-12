@@ -97,4 +97,10 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 
 	Route::get('/books', 'AdminController@books')->name('admin.books');
 
+	Route::get('/destroyB/{id}', 'AdminController@destroyB')->name('admin.destroyB');
+
+	Route::get('/editB/{id}', 'AdminController@editB')->name('admin.editB');
+
+	Route::post('/updateB/{id}', 'AdminController@updateB')->name('admin.updateB');
+
 });

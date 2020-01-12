@@ -9,6 +9,7 @@ use File;
 use App\Admin;
 use App\User;
 use App\Employee;
+use App\Book;
 
 class AdminController extends Controller
 {
@@ -106,5 +107,55 @@ class AdminController extends Controller
         ->get();
 
         return view('Admin.books', ['books' => $books]);
+    }
+
+    public function editB($id)
+    {
+        //
+        $book = DB::table('books')
+        ->where('books.id', '=' , $id)
+        ->first();
+
+        return view('Admin.editB', ['book' => $book]);
+    }
+
+   
+    public function updateB(Request $request, $id)
+    {
+
+        Book::where('books.id' , '=' , $id)->update([
+            "title"                     => $request->input('title'),
+            "auther"                     => $request->input('auther'),
+            "publisher"                     => $request->input('publisher'),
+            "publishing_date"                     => $request->input('publishingdate'),
+            "category"                     => $request->input('category'),
+            "edition"                     => $request->input('edition'),
+            "pages"                     => $request->input('pages'),
+            "no_of_copies"                     => $request->input('noofcopies'),
+            "avilable"                     => $request->input('avilable'),
+            "shelf_Number"                     => $request->input('shelfNumber'),
+        ]);
+
+        
+
+        $books = DB::table('books')
+        ->get();
+
+        return view('Admin.books' , ['books' => $books]);
+    }
+
+    public function destroyB($id)
+    {
+        //
+        $book = Book::where('id', $id)->first();
+        if($book != null){
+            $book->delete();
+        }
+
+        $books = DB::table('books')
+        ->get();
+
+        return view('Admin.books')->with('books' , $books);
+
     }
 }
