@@ -11,7 +11,7 @@
 	    </div>
 	      <div class="form-group">
 	        <input type="submit" class="btn btn-primary float-right" name="submit" value="Save" />
-	        <a href="{{url('/index')}}" class="btn btn-primary float-left">Back</a>
+	        <a href="{{url('/Adminindex')}}" class="btn btn-primary float-left">Back</a>
 	    </div>
 	</form>
 </div>

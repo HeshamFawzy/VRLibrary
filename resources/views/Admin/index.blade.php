@@ -4,8 +4,8 @@
 	<div class="container d-flex justify-content-center">
 		<div class="bg-light border-right" id="sidebar-wrapper">
 	      <div class="list-group list-group-flush">
-	        <a href="{{ url('employees')}}" class="list-group-item list-group-item-action bg-light">Employees</a>
-	        <a href="{{ url('books')}}" class="list-group-item list-group-item-action bg-light">Books</a>
+	        <a href="{{ url('/employees')}}" class="list-group-item list-group-item-action bg-light">Employees</a>
+	        <a href="{{ url('/books')}}" class="list-group-item list-group-item-action bg-light">Books</a>
 	      </div>
     	</div>
 		<div class="card p-2">
