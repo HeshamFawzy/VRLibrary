@@ -33,6 +33,8 @@ class LoginController extends Controller
             return '/Basicindex';
         } else if (auth()->user()->role == 'Admin'){
             return '/Adminindex';
+        } else if (auth()->user()->role == 'Employee'){
+            return '/Employeeindex';
         }
     }
 

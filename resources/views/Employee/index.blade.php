@@ -26,7 +26,7 @@
 		        </div>
 		        @endif
 		    </div>
-		    <a class="btn btn-primary" href="{{ route('employee.editportfolio', $employee->id)}}">Edit</a>
+		    <a class="btn btn-primary" href="{{ route('employee.editprofile', $employee->id)}}">Edit</a>
       	</div>
 	</div>
 @endsection

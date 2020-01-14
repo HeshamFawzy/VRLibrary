@@ -100,4 +100,10 @@ Route::group(["middleware" => ["auth","comman"]], function(){
 		Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
 });
 
-Route::get('/Employeeindex', 'EmployeeController@index')->name('employee.index');
+Route::group(["middleware" => ["auth","employee"]], function(){
+
+	Route::get('/Employeeindex', 'EmployeeController@index')->name('employee.index');
+
+	Route::get('/editprofile/{id}', 'EmployeeController@editprofile')->name('employee.editprofile');
+
+});

@@ -18,17 +18,17 @@ class EmployeeController extends Controller
 	    return view('Employee.index', ['employee' => $employee]);
 	}
 
-	public function editportfolio($id)
+	public function editprofile($id)
     {
         //
         $employee = DB::table('employees')
         ->join('users', 'users.id', '=' , 'employees.user_id')
         ->first();
 
-        return view('employee.editportfolio', ['employee' => $employee]);
+        return view('employee.editprofile', ['employee' => $employee]);
     }
 
-    public function updateportfolio(Request $request, $id)
+    /*public function updateportfolio(Request $request, $id)
     {
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
@@ -49,5 +49,5 @@ class EmployeeController extends Controller
         ->join('users', 'users.id', '=' , 'basic_admins.user_id')
         ->first();
         return view('BasicAdmin.index', ['basicadmin' => $basicadmin]);
-    }
+    }*/
 }
