@@ -7,14 +7,14 @@
 
 	      </div>
     	</div>
-		<div class="card p-2">
+		<div class="card p-3">
 		    <div class="row ">
 		    	@if($employee ?? '')	
 		        <div class="col-md-8 px-3">
 		            <div class="card-block px-3">
 		            	<p>Welcome :<span> {{$employee->name}}</span></p>
 		            	<p>First Name :<span> {{$employee->first_name}}</span></p>
-		            	<p>Last Name <span> {{$employee->last_name}}</span>
+		            	<p>Last Name :<span> {{$employee->last_name}}</span>
 		            	<p>Email :<span> {{$employee->email}}</span></p>
 		            	<p>Hire Date :<span> {{$employee->hire_date}}</span></p>
 		            	<p>Salary :<span> {{$employee->salary}}</span></p>
