@@ -99,3 +99,5 @@ Route::group(["middleware" => ["auth","comman"]], function(){
 
 		Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
 });
+
+Route::get('/Employeeindex', 'EmployeeController@index')->name('Employee.index');
