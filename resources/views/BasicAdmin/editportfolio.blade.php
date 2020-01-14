@@ -42,6 +42,7 @@
 	    <div class="form-group">
 	        <input type="submit" class="btn btn-primary float-right" name="submit"/>
 	    </div>
+	    <a href="{{url('/Basicindex')}}" class="btn btn-primary col-2 float-left">Back</a>
 	</form>
 </div>
 @endsection

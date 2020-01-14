@@ -44,7 +44,7 @@
 			    <div class="form-group">
 			       <input type="submit" class="btn btn-primary float-right" name="submit" value="Save" />
 			</form>
-	        <a href="{{url('/members')}}" class="btn btn-primary">Back</a>
+	        <a href="{{url('/Employeeindex')}}" class="btn btn-primary">Back</a>
 	    </div>
 </div>
 @endsection

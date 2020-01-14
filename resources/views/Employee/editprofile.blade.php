@@ -52,6 +52,7 @@
 	    <div class="form-group">
 	        <input type="submit" class="btn btn-primary float-right" name="submit"/>
 	    </div>
+	   	<a href="{{url('/Employeeindex')}}" class="btn btn-primary col-2 float-left">Back</a>
 	</form>
 </div>
 @endsection
