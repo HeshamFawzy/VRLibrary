@@ -24,8 +24,10 @@
                     @if(auth()->user() != null)
                         @if(auth()->user()->role == 'BasicAdmin')
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/Basicindex')}}">Profile</a></li>
-                        @else
+                        @elseif(auth()->user()->role == 'Admin')
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/Adminindex')}}">Profile</a></li>
+                        @elseif(auth()->user()->role == 'Employee')
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url('/Employeeindex')}}">Profile</a></li>
                         @endif
                     @endif
                 </ul>
