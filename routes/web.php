@@ -100,6 +100,22 @@ Route::group(["middleware" => ["auth","comman"]], function(){
 		Route::post('/updateE/{id}', 'BasicAdminController@updateE')->name('basicadmin.updateE');
 });
 
+Route::group(["middleware" => ["auth","comman2"]], function(){
+
+		Route::get('/members', 'BasicAdminController@members')->name('basicadmin.members');
+
+		Route::get('/destroyM/{id}', 'BasicAdminController@destroyM')->name('basicadmin.destroyM');
+
+		Route::get('/editM/{id}', 'BasicAdminController@editM')->name('basicadmin.editM');
+
+		Route::post('/updateM/{id}', 'BasicAdminController@updateM')->name('basicadmin.updateM');
+});
+
+
+
+
+
+
 Route::group(["middleware" => ["auth","employee"]], function(){
 
 	Route::get('/Employeeindex', 'EmployeeController@index')->name('employee.index');

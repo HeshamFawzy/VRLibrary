@@ -4,7 +4,7 @@
 	<div class="container d-flex justify-content-center">
 		<div class="bg-light border-right" id="sidebar-wrapper">
 	      <div class="list-group list-group-flush">
-
+	      	 <a href="{{ url('/members')}}" class="list-group-item list-group-item-action bg-light">Members</a>
 	      </div>
     	</div>
 		<div class="card p-3">

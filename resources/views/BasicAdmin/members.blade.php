@@ -3,7 +3,11 @@
 @section('content')
 <div class="row p-1 m-2 d-flex justify-content-center">
 	<div class="col-8 p-2" style="background-color: white;">
-  <a href="{{url('/Basicindex')}}" class="btn btn-primary float-right">Back</a>
+  @if(auth()->user()->role == 'BasicAdmin')
+    <a href="{{ route('basicadmin.index')}}" class="btn btn-primary float-right">Back</a>
+  @elseif(auth()->user()->role == 'Employee')
+    <a href="{{ route('employee.index')}}" class="btn btn-primary float-right">Back</a>
+  @endif
 	<h1 class="text-center">Members</h1>
 	<table class="table table-hover">
   <thead>
