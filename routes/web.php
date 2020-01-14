@@ -106,4 +106,5 @@ Route::group(["middleware" => ["auth","employee"]], function(){
 
 	Route::get('/editprofile/{id}', 'EmployeeController@editprofile')->name('employee.editprofile');
 
+	Route::post('/updateprofile/{id}', 'EmployeeController@updateprofile')->name('employee.updateprofile');
 });
