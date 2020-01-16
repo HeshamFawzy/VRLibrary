@@ -9,7 +9,7 @@
   @elseif(auth()->user()->role == 'Employee')
     <a href="{{ route('employee.index')}}" class="btn btn-primary float-right">Back</a>
     <div class="form-group">
-      <input type="text" name="firstname" id="firstname" class="col-4 form-control" placeholder="Search By Employee First Name">
+      <input type="text" name="firstname" id="firstname" class="col-4 form-control" placeholder="Search By Member First Name">
       <div id="names"></div>
     </div>
     {{ csrf_field() }}
