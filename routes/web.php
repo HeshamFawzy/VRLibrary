@@ -47,8 +47,6 @@ Route::group(["middleware" => ["auth","basicadmin"]], function(){
 
 		Route::post('/store', 'BasicAdminController@store')->name('basicadmin.store');
 
-		Route::get('ajax', function(){ return view('ajax'); });
-
 		Route::get('/destroy/{id}', 'BasicAdminController@destroy')->name('basicadmin.destroy');
 
 		Route::get('/edit/{id}', 'BasicAdminController@edit')->name('basicadmin.edit');
@@ -75,17 +73,7 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 
 	Route::post('/storeadmin', 'AdminController@storeadmin')->name('admin.storeadmin');
 
-	Route::get('ajax', function(){ return view('ajax'); });
-
 	Route::post('/search', 'AdminController@search')->name('admin.search');
-
-	Route::get('/books', 'AdminController@books')->name('admin.books');
-
-	Route::get('/destroyB/{id}', 'AdminController@destroyB')->name('admin.destroyB');
-
-	Route::get('/editB/{id}', 'AdminController@editB')->name('admin.editB');
-
-	Route::post('/updateB/{id}', 'AdminController@updateB')->name('admin.updateB');
 
 });
 
@@ -112,6 +100,14 @@ Route::group(["middleware" => ["auth","comman2"]], function(){
 
 		Route::post('/search', 'EmployeeController@search')->name('employee.search');
 
+		Route::get('/books', 'AdminController@books')->name('admin.books');
+
+		Route::get('/destroyB/{id}', 'AdminController@destroyB')->name('admin.destroyB');
+
+		Route::get('/editB/{id}', 'AdminController@editB')->name('admin.editB');
+
+		Route::post('/updateB/{id}', 'AdminController@updateB')->name('admin.updateB');
+
 });
 
 
@@ -131,6 +127,9 @@ Route::group(["middleware" => ["auth","employee"]], function(){
 
 	Route::post('/unauth', 'EmployeeController@unauth')->name('employee.unauth');
 
-	Route::get('ajax', function(){ return view('ajax'); });
+
 
 });
+
+
+Route::get('ajax', function(){ return view('ajax'); });

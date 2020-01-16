@@ -3,7 +3,28 @@
 @section('content')
 <div class="row p-1 m-2 d-flex justify-content-center">
 	<div class="col-12 p-2" style="background-color: white;">
-  <a href="{{ route('admin.index')}}" class="btn btn-primary">Back</a>
+  @if(auth()->user()->role == 'Admin')
+      <a href="{{ route('admin.index')}}" class="btn btn-primary">Back</a>
+  @elseif(auth()->user()->role == 'Employee')
+      <a href="{{ route('employee.index')}}" class="btn btn-primary float-right">Back</a>
+    <div>
+      <div class="form-group">
+        <input type="text" name="publisher" id="publisher" class="col-4 form-control d-inline" placeholder="Search By Book Publisher">
+        <div id="publisher" class="d-inline"></div>
+      </div>
+      {{ csrf_field() }}
+      <div class="form-group">
+        <input type="text" name="author" id="author" class="col-4 form-control d-inline" placeholder="Search By Book Author">
+        <div id="author" class="d-inline"></div>
+      </div>
+      {{ csrf_field() }}
+      <div class="form-group">
+        <input type="text" name="title" id="title" class="col-4 form-control d-inline" placeholder="Search By Book Title">
+        <div id="title" class="d-inline"></div>
+      </div>
+      {{ csrf_field() }}
+    </div>
+  @endif
 	<table class="table table-hover">
   <thead>
     <tr>

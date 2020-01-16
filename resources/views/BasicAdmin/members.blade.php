@@ -27,8 +27,8 @@
     </tr>
   </thead>
   <tbody id="table">
-  	@if(count($members) > 0)
-	@foreach($members as $member)
+  @if(count($members) > 0)
+	 @foreach($members as $member)
     <tr>
 				<td>{{$member->first_name}}</td>
 				<td>{{$member->last_name}}</td>
