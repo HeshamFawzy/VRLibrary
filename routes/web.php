@@ -109,6 +109,9 @@ Route::group(["middleware" => ["auth","comman2"]], function(){
 		Route::get('/editM/{id}', 'BasicAdminController@editM')->name('basicadmin.editM');
 
 		Route::post('/updateM/{id}', 'BasicAdminController@updateM')->name('basicadmin.updateM');
+
+		Route::post('/search', 'EmployeeController@search')->name('employee.search');
+
 });
 
 
@@ -123,4 +126,11 @@ Route::group(["middleware" => ["auth","employee"]], function(){
 	Route::get('/editprofile/{id}', 'EmployeeController@editprofile')->name('employee.editprofile');
 
 	Route::post('/updateprofile/{id}', 'EmployeeController@updateprofile')->name('employee.updateprofile');
+
+	Route::post('/auth', 'EmployeeController@auth')->name('employee.auth');
+
+	Route::post('/unauth', 'EmployeeController@unauth')->name('employee.unauth');
+
+	Route::get('ajax', function(){ return view('ajax'); });
+
 });

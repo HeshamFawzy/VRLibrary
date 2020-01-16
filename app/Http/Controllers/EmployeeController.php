@@ -60,4 +60,40 @@ class EmployeeController extends Controller
         ->first();
         return view('Employee.index', ['employee' => $employee]);
     }
+
+    public function auth(Request $request)
+    {
+        User::where('users.id' , '=' , $request->input('id'))->update([
+            'role' => 'Member',
+        ]);
+    }
+
+    public function unauth(Request $request)
+    {
+        User::where('users.id' , '=' , $request->input('id'))->update([
+            'role' => '',
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+
+            $data = DB::table('members')
+            ->where('first_name','LIKE', "%{$query}%")
+            ->join('users' , 'users.id' , '=' , 'members.user_id')
+            ->get();
+
+            $output = '<ul class="dropdown-menu" style="display:block;position:relative;text-align:center;">';
+
+            foreach($data as $row){
+                $output .= '<li><p class="alert-light pl-2 pr-2">'. "Name : " .$row->first_name."   Phone : ".$row->phone. "   Email : " .$row->email. '</p></li>';
+            }
+
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
 }
