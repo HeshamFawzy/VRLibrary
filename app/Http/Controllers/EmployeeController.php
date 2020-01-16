@@ -8,6 +8,7 @@ use File;
 use DB;
 use App\User;
 use App\Employee;
+use App\Book;
 
 class EmployeeController extends Controller
 {
@@ -90,6 +91,27 @@ class EmployeeController extends Controller
 
             foreach($data as $row){
                 $output .= '<li><p class="alert-light pl-2 pr-2">'. "Name : " .$row->first_name."   Phone : ".$row->phone. "   Email : " .$row->email. '</p></li>';
+            }
+
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+
+    public function publisher(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+
+            $data = DB::table('books')
+            ->where('publisher','LIKE', "%{$query}%")
+            ->get();
+
+            $output = '<ul class="dropdown-menu" style="display:block;position:relative;text-align:center;">';
+
+            foreach($data as $row){
+                $output .= '<li><p class="alert-light pl-2 pr-2">'. "Avilable : " .$row->avilable."   No Of Borrowed : ".$row->pages. "   No Of Copies : " .$row->no_of_copies. '</p></li>';
             }
 
             $output .= '</ul>';

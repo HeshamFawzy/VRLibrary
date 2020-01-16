@@ -127,6 +127,7 @@ Route::group(["middleware" => ["auth","employee"]], function(){
 
 	Route::post('/unauth', 'EmployeeController@unauth')->name('employee.unauth');
 
+	Route::post('/publisher', 'EmployeeController@publisher')->name('employee.publisher');
 
 
 });

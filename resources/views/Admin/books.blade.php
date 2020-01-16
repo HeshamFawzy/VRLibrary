@@ -10,14 +10,12 @@
     <div>
       <div class="form-group">
         <input type="text" name="publisher" id="publisher" class="col-4 form-control d-inline" placeholder="Search By Book Publisher">
-        <div id="publisher" class="d-inline"></div>
+        <div id="publisherdiv" class="d-inline float-right"></div>
       </div>
-      {{ csrf_field() }}
       <div class="form-group">
         <input type="text" name="author" id="author" class="col-4 form-control d-inline" placeholder="Search By Book Author">
         <div id="author" class="d-inline"></div>
       </div>
-      {{ csrf_field() }}
       <div class="form-group">
         <input type="text" name="title" id="title" class="col-4 form-control d-inline" placeholder="Search By Book Title">
         <div id="title" class="d-inline"></div>
@@ -67,4 +65,35 @@
 <div>
 </div>
 <br>
+
+<script>
+        $(document).ready(function(){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $("#publisher").keyup(function(){
+                $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/publisher',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {_token: CSRF_TOKEN, query:$(this).val()},
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function (data) {
+                      $('#publisherdiv').fadeIn();
+                      $('#publisherdiv').html(data);
+                    },
+                    error: function(xhr, status, error) {
+                      console.log(xhr);
+                      if (xhr == 'undefined' || xhr == undefined) {
+                          alert('undefined');
+                      } else {
+                          alert('object is there');
+                      }
+                      alert(status);
+                      alert(error);
+                    }
+                });
+            });
+       });    
+</script>
+
 @endsection
