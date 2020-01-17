@@ -129,6 +129,9 @@ Route::group(["middleware" => ["auth","employee"]], function(){
 
 	Route::post('/publisher', 'EmployeeController@publisher')->name('employee.publisher');
 
+	Route::post('/author', 'EmployeeController@author')->name('employee.author');
+
+	Route::post('/title', 'EmployeeController@title')->name('employee.title');
 
 });
 

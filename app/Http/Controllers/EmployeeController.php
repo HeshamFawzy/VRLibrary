@@ -111,10 +111,52 @@ class EmployeeController extends Controller
             $output = '<ul class="dropdown-menu" style="display:block;position:relative;text-align:center;">';
 
             foreach($data as $row){
-                $output .= '<li><p class="alert-light pl-2 pr-2">'. "Avilable : " .$row->avilable."   No Of Borrowed : ".$row->pages. "   No Of Copies : " .$row->no_of_copies. '</p></li>';
+                $output .= '<li><p class="alert-light pl-2 pr-2">'. "Avilable : " .$row->available.",   No Of Borrowed : ".$row->pages. ",   No Of Copies : " .$row->no_of_copies. '</p></li>';
             }
 
-            $output .= '</ul>';
+            $output .= '<hr></ul>';
+            echo $output;
+        }
+    }
+
+    public function author(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+
+            $data = DB::table('books')
+            ->where('author','LIKE', "%{$query}%")
+            ->get();
+
+            $output = '<ul class="dropdown-menu" style="display:block;position:relative;text-align:center;">';
+
+            foreach($data as $row){
+                $output .= '<li><p class="alert-light pl-2 pr-2">'. "Avilable : " .$row->available.",   No Of Borrowed : ".$row->pages. ",   No Of Copies : " .$row->no_of_copies. '</p></li>';
+            }
+
+            $output .= '<hr></ul>';
+            echo $output;
+        }
+    }
+
+    public function title(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+
+            $data = DB::table('books')
+            ->where('title','LIKE', "%{$query}%")
+            ->get();
+
+            $output = '<ul class="dropdown-menu" style="display:block;position:relative;text-align:center;">';
+
+            foreach($data as $row){
+                $output .= '<li><p class="alert-light pl-2 pr-2">'. "Avilable : " .$row->available.",   No Of Borrowed : ".$row->pages. ",   No Of Copies : " .$row->no_of_copies. '</p></li>';
+            }
+
+            $output .= '<hr></ul>';
             echo $output;
         }
     }

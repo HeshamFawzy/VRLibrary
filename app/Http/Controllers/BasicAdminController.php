@@ -64,14 +64,13 @@ class BasicAdminController extends Controller
 
         $Book = Book::create([
             'title' =>              'title',
-            'auther' =>             'auther',
+            'author' =>             'author',
             'publisher' =>          'publisher',
             'publishing_date' =>    'publishing_date',
             'category' =>           'category',
             'edition' =>            'edition',
             'pages' =>              'pages',
             'no_of_copies' =>       'no_of_copies',
-            'avilable' =>           'avilable',
             'shelf_Number' =>       'shelf_Number',
         ]);
 
