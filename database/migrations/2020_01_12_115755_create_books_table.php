@@ -23,6 +23,7 @@ class CreateBooksTable extends Migration
             $table->string('edition')->nullabel();
             $table->integer('pages')->nullabel();
             $table->integer('no_of_copies')->nullabel();
+            $table->integer('no_of_borrowed')->nullabel();
             $table->boolean('available')->nullabel();
             $table->integer('shelf_Number')->nullabel();
             $table->timestamps();

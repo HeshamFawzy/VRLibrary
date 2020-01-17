@@ -71,6 +71,7 @@ class BasicAdminController extends Controller
             'edition' =>            'edition',
             'pages' =>              'pages',
             'no_of_copies' =>       'no_of_copies',
+            'no_of_borrowed' =>     'no_of_borrowed',
             'shelf_Number' =>       'shelf_Number',
         ]);
 

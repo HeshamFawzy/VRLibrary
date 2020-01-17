@@ -32,6 +32,7 @@
       <th>Edition</th>
       <th>Pages</th>
       <th>No Of Copies</th>
+      <th>No Of Borrowed</th>
       <th>Available</th>
       <th>Shelf Number</th>
       <th colspan="2">Modify</th>
@@ -49,7 +50,12 @@
 				<td>{{$book->edition}}</td>
 				<td>{{$book->pages}}</td>
 				<td>{{$book->no_of_copies}}</td>
-				<td>{{$book->available}}</td>
+        <td>{{$book->no_of_borrowed}}</td>
+        @if($book->available == '1')
+            <td>true</td>
+        @else
+            <td>false</td>
+        @endif
 				<td>{{$book->shelf_Number}}</td>
 				<td>
 					<a href="{{ url('/editB' , $book->id)}}" class="btn btn-success">Edit</a>
