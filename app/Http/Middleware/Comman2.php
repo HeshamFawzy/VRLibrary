@@ -15,7 +15,7 @@ class Comman2
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->role == 'BasicAdmin' or auth()->user()->role == 'Employee'){
+        if(auth()->user()->role == 'Admin' or auth()->user()->role == 'Employee'){
             return $next($request);
         } else {
           abort(404);
