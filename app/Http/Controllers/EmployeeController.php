@@ -160,4 +160,5 @@ class EmployeeController extends Controller
             echo $output;
         }
     }
+
 }
