@@ -63,19 +63,20 @@ class BasicAdminController extends Controller
         ]);
 
         $Book = Book::create([
-            'title' =>              'title',
-            'author' =>             'author',
-            'publisher' =>          'publisher',
-            'publishing_date' =>    'publishing_date',
-            'category' =>           'category',
-            'edition' =>            'edition',
-            'pages' =>              'pages',
-            'no_of_copies' =>       'no_of_copies',
-            'no_of_borrowed' =>     'no_of_borrowed',
-            'shelf_Number' =>       'shelf_Number',
+            'title' =>              'sea adventure',
+            'author' =>             'hesham',
+            'publisher' =>          'dar el salam',
+            'publishing_date' =>    '01/01/2020',
+            'category' =>           'adventure',
+            'edition' =>            '2nd',
+            'pages' =>              '1000',
+            'no_of_copies' =>       '5',
+            'no_of_borrowed' =>     '2',
+            'available'      =>     '3',
+            'shelf_Number' =>       '100100',
         ]);
 
-        return view('public.start')->with('BasicAdminUser' , $BasicAdminUser);
+        return view('home');
     }
 
 

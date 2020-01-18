@@ -51,15 +51,14 @@
 				<td>{{$book->pages}}</td>
 				<td>{{$book->no_of_copies}}</td>
         <td>{{$book->no_of_borrowed}}</td>
-        @if($book->available == '1')
-            <td>true</td>
-        @else
-            <td>false</td>
-        @endif
+        <td>{{$book->available}}</td>
 				<td>{{$book->shelf_Number}}</td>
 				<td>
 					<a href="{{ url('/editB' , $book->id)}}" class="btn btn-success">Edit</a>
 					<a href="{{ url('/destroyB' , $book->id)}}" class="btn btn-danger" name="delete">Delete</a>
+          @if($book->available != '0' && $book->no_of_borrowed < $book->available)
+            <a href="{{ url('/editB' , $book->id)}}" class="btn btn-success">Edit</a>
+          @endif
 				</td>
     </tr>
     @endforeach
