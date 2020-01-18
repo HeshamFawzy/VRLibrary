@@ -142,6 +142,7 @@ class BasicAdminController extends Controller
             'name' => $request->input('firstname'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
+            'role'      =>  'Admin'
         ]);
 
         $admin = Admin::create([
