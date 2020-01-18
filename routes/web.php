@@ -67,9 +67,9 @@ Route::group(["middleware" => ["auth","admin"]], function(){
 
 	Route::get('/Adminindex', 'AdminController@index')->name('admin.index');
 
-	Route::get('/editprofile/{id}', 'AdminController@editprofile')->name('admin.editprofile');
+	Route::get('/editportfolio/{id}', 'AdminController@editportfolio')->name('admin.editportfolio');
 
-	Route::post('/updateprofile/{id}', 'AdminController@updateprofile')->name('admin.updateprofile');
+	Route::post('/updateportfolio/{id}', 'AdminController@updateportfolio')->name('admin.updateportfolio');
 
 	Route::post('/storeadmin', 'AdminController@storeadmin')->name('admin.storeadmin');
 

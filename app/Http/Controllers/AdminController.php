@@ -23,13 +23,13 @@ class AdminController extends Controller
 	    return view('Admin.index', ['admin' => $admin]);
 	}
 
-	public function editprofile($id)
+	public function editportfolio($id)
     {
     	//
         return view('Admin.editprofile', ['id' => $id]);
 	}
 
-	 public function updateprofile(Request $request, $id)
+	 public function updateportfolio(Request $request, $id)
     {
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
