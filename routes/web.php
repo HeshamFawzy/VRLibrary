@@ -39,9 +39,9 @@ Route::group(["middleware" => ["auth","basicadmin"]], function(){
 
 		Route::get('/Basicindex', 'BasicAdminController@index')->name('basicadmin.index');
 
-		Route::get('/editportfolio/{id}', 'BasicAdminController@editportfolio')->name('basicadmin.editportfolio');
+		Route::get('/editport/{id}', 'BasicAdminController@editport')->name('basicadmin.editport');
 
-		Route::post('/updateportfolio/{id}', 'BasicAdminController@updateportfolio')->name('basicadmin.updateportfolio');
+		Route::post('/updateport/{id}', 'BasicAdminController@updateport')->name('basicadmin.updateport');
 
 		Route::get('/admins', 'BasicAdminController@admins')->name('basicadmin.admins');
 

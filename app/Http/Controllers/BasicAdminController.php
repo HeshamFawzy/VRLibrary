@@ -92,7 +92,7 @@ class BasicAdminController extends Controller
         return view('BasicAdmin.index', ['basicadmin' => $basicadmin]);
     }
 
-    public function editportfolio($id)
+    public function editport($id)
     {
         //
         $admin = DB::table('basic_admins')
@@ -101,7 +101,7 @@ class BasicAdminController extends Controller
         return view('BasicAdmin.editportfolio', ['admin' => $admin]);
     }
 
-    public function updateportfolio(Request $request, $id)
+    public function updateport(Request $request, $id)
     {
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
