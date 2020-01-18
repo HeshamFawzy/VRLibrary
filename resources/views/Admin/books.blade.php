@@ -57,7 +57,7 @@
 					<a href="{{ url('/editB' , $book->id)}}" class="btn btn-success">Edit</a>
 					<a href="{{ url('/destroyB' , $book->id)}}" class="btn btn-danger" name="delete">Delete</a>
           @if($book->available != '0' && $book->no_of_borrowed < $book->available)
-            <a href="{{ url('/editB' , $book->id)}}" class="btn btn-success">Edit</a>
+            <a href="{{ url('/borrow' , $book->id)}}" class="btn btn-secondary">Borrow</a>
           @endif
 				</td>
     </tr>
