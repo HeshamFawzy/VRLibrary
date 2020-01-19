@@ -53,14 +53,6 @@ Route::group(["middleware" => ["auth","basicadmin"]], function(){
 
 		Route::post('/update/{id}', 'BasicAdminController@update')->name('basicadmin.update');
 
-		Route::get('/members', 'BasicAdminController@members')->name('basicadmin.members');
-
-		Route::get('/destroyM/{id}', 'BasicAdminController@destroyM')->name('basicadmin.destroyM');
-
-		Route::get('/editM/{id}', 'BasicAdminController@editM')->name('basicadmin.editM');
-
-		Route::post('/updateM/{id}', 'BasicAdminController@updateM')->name('basicadmin.updateM');
-
 });
 
 Route::group(["middleware" => ["auth","admin"]], function(){
@@ -100,6 +92,11 @@ Route::group(["middleware" => ["auth","comman2"]], function(){
 
 		Route::post('/search', 'EmployeeController@search')->name('employee.search');
 
+});
+
+
+Route::group(["middleware" => ["auth","comman3"]], function(){
+
 		Route::get('/books', 'AdminController@books')->name('admin.books');
 
 		Route::get('/destroyB/{id}', 'AdminController@destroyB')->name('admin.destroyB');
@@ -107,9 +104,8 @@ Route::group(["middleware" => ["auth","comman2"]], function(){
 		Route::get('/editB/{id}', 'AdminController@editB')->name('admin.editB');
 
 		Route::post('/updateB/{id}', 'AdminController@updateB')->name('admin.updateB');
-
+		
 });
-
 
 
 
